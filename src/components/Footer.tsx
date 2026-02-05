@@ -1,4 +1,5 @@
 import { Mail, Phone, Linkedin, Instagram } from "lucide-react";
+import evotechLogo from "@/assets/evotech-logo.png";
 
 const Footer = () => {
   return (
@@ -7,7 +8,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold text-gradient-primary mb-4">EVOTECH</h3>
+            <img src={evotechLogo} alt="EVOTECH Automações" className="h-10 mb-4" />
             <p className="text-muted-foreground text-sm mb-4">
               Agentes de IA humanizados que entregam resultados reais e mensuráveis.
             </p>

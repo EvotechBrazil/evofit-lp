@@ -1,10 +1,24 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import heroImage from "@/assets/hero-ai-illustration.jpg";
+import evotechLogo from "@/assets/evotech-logo.png";
 
 const Hero = () => {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      {/* Navigation with Logo */}
+      <nav className="absolute top-0 left-0 right-0 z-20 py-4">
+        <div className="container mx-auto px-4 flex items-center justify-between">
+          <img src={evotechLogo} alt="EVOTECH Automações" className="h-12 md:h-14" />
+          <div className="hidden md:flex items-center gap-6">
+            <a href="#solucoes" className="text-sm font-medium hover:text-primary transition-colors">Soluções</a>
+            <a href="#como-funciona" className="text-sm font-medium hover:text-primary transition-colors">Como Funciona</a>
+            <a href="#casos" className="text-sm font-medium hover:text-primary transition-colors">Casos de Sucesso</a>
+            <Button variant="hero" size="sm">Fale Conosco</Button>
+          </div>
+        </div>
+      </nav>
+
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-background" />
       
