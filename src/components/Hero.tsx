@@ -6,10 +6,16 @@ import evotechLogo from "@/assets/evotech-logo.png";
 const Hero = () => {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Navigation with Logo */}
+      {/* Background Logo Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+        style={{ backgroundImage: `url(${evotechLogo})` }}
+      />
+      
+      {/* Navigation */}
       <nav className="absolute top-0 left-0 right-0 z-20 py-4">
         <div className="container mx-auto px-4 flex items-center justify-between">
-          <img src={evotechLogo} alt="EVOTECH Automações" className="h-12 md:h-14" />
+          <span className="text-2xl font-bold text-gradient-primary">EVOTECH</span>
           <div className="hidden md:flex items-center gap-6">
             <a href="#solucoes" className="text-sm font-medium hover:text-primary transition-colors">Soluções</a>
             <a href="#como-funciona" className="text-sm font-medium hover:text-primary transition-colors">Como Funciona</a>
@@ -19,8 +25,8 @@ const Hero = () => {
         </div>
       </nav>
 
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-background" />
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/70 to-background/90" />
       
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-30">
