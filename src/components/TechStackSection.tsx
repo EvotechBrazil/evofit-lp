@@ -38,12 +38,12 @@ const TechStackSection = () => {
     <section className="py-20 bg-[hsl(220_25%_6%)] text-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-slide-up">
-          <div className="inline-block mb-4 px-4 py-2 bg-primary/10 rounded-full">
+          <div className="inline-block mb-4 px-4 py-2 bg-primary/20 rounded-full">
             <span className="text-sm font-semibold text-primary-light">Stack Tecnológica</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Construído com as{" "}
-            <span className="text-gradient-accent">Melhores Ferramentas</span>
+            <span className="text-gradient-primary">Melhores Ferramentas</span>
           </h2>
           <p className="text-xl text-white/70 max-w-3xl mx-auto">
             Usamos apenas tecnologias comprovadas e líderes de mercado. Nada experimental, nada arriscado.

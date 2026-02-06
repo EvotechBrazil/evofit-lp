@@ -43,7 +43,7 @@ const CaseStudiesSection = () => {
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Resultados que{" "}
-            <span className="text-gradient-accent">Falam por Si</span>
+            <span className="text-gradient-primary">Falam por Si</span>
           </h2>
           <p className="text-xl text-white/70 max-w-3xl mx-auto">
             Números reais de clientes reais. Sem exageros, sem promessas vazias.
@@ -68,14 +68,14 @@ const CaseStudiesSection = () => {
               </div>
 
               <div className="pt-6 border-t border-white/10">
-                <p className="text-sm font-semibold text-muted-foreground mb-4">RESULTADOS</p>
+                <p className="text-sm font-semibold text-white/50 mb-4">RESULTADOS</p>
                 <div className="grid grid-cols-3 gap-4">
                   {caseStudy.results.map((result, idx) => {
                     const Icon = result.icon;
                     return (
                       <div key={idx} className="text-center p-4 bg-white/5 rounded-lg">
-                        <Icon className="w-6 h-6 text-accent mx-auto mb-2" />
-                        <div className="text-2xl font-bold text-accent mb-1">{result.metric}</div>
+                        <Icon className="w-6 h-6 text-primary-light mx-auto mb-2" />
+                        <div className="text-2xl font-bold text-primary-light mb-1">{result.metric}</div>
                         <div className="text-sm text-white/60">{result.label}</div>
                       </div>
                     );

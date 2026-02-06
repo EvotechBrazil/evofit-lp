@@ -1,5 +1,4 @@
 import { Mail, Phone, Linkedin, Instagram } from "lucide-react";
-import evotechLogo from "@/assets/evotech-logo.png";
 
 const Footer = () => {
   return (
@@ -8,8 +7,8 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <img src={evotechLogo} alt="EVOTECH Automações" className="h-10 mb-4" />
-            <p className="text-white/60 text-sm mb-4">
+            <span className="text-2xl font-bold text-gradient-primary">EVOTECH</span>
+            <p className="text-white/60 text-sm mb-4 mt-3">
               Agentes de IA humanizados que entregam resultados reais e mensuráveis.
             </p>
             <div className="flex gap-3">
@@ -26,10 +25,10 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Soluções</h4>
             <ul className="space-y-2 text-sm text-white/60">
-              <li><a href="#" className="hover:text-accent transition-colors">Atendimento ao Cliente</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Qualificação de Leads</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Agendamento Automatizado</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Suporte Técnico</a></li>
+              <li><a href="#" className="hover:text-primary-light transition-colors">Atendimento ao Cliente</a></li>
+              <li><a href="#" className="hover:text-primary-light transition-colors">Qualificação de Leads</a></li>
+              <li><a href="#" className="hover:text-primary-light transition-colors">Agendamento Automatizado</a></li>
+              <li><a href="#" className="hover:text-primary-light transition-colors">Suporte Técnico</a></li>
             </ul>
           </div>
 
@@ -37,10 +36,10 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Empresa</h4>
             <ul className="space-y-2 text-sm text-white/60">
-              <li><a href="#" className="hover:text-accent transition-colors">Sobre Nós</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Casos de Sucesso</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Carreiras</a></li>
+              <li><a href="#" className="hover:text-primary-light transition-colors">Sobre Nós</a></li>
+              <li><a href="#" className="hover:text-primary-light transition-colors">Casos de Sucesso</a></li>
+              <li><a href="#" className="hover:text-primary-light transition-colors">Blog</a></li>
+              <li><a href="#" className="hover:text-primary-light transition-colors">Carreiras</a></li>
             </ul>
           </div>
 
@@ -49,14 +48,14 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Contato</h4>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2 text-white/60">
-                <Mail className="w-4 h-4 text-accent" />
-                <a href="mailto:contato@evotech.ai" className="hover:text-accent transition-colors">
+                <Mail className="w-4 h-4 text-primary-light" />
+                <a href="mailto:contato@evotech.ai" className="hover:text-primary-light transition-colors">
                   contato@evotech.ai
                 </a>
               </li>
               <li className="flex items-center gap-2 text-white/60">
-                <Phone className="w-4 h-4 text-accent" />
-                <a href="tel:+5511999999999" className="hover:text-accent transition-colors">
+                <Phone className="w-4 h-4 text-primary-light" />
+                <a href="tel:+5511999999999" className="hover:text-primary-light transition-colors">
                   (11) 99999-9999
                 </a>
               </li>
@@ -68,9 +67,9 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/50">
             <p>© 2024 EVOTECH Automações. Todos os direitos reservados.</p>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-accent transition-colors">Privacidade</a>
-              <a href="#" className="hover:text-accent transition-colors">Termos de Uso</a>
-              <a href="#" className="hover:text-accent transition-colors">LGPD</a>
+              <a href="#" className="hover:text-primary-light transition-colors">Privacidade</a>
+              <a href="#" className="hover:text-primary-light transition-colors">Termos de Uso</a>
+              <a href="#" className="hover:text-primary-light transition-colors">LGPD</a>
             </div>
           </div>
         </div>

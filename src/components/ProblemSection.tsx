@@ -34,7 +34,7 @@ const ProblemSection = () => {
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Seu Cliente Não Quer Falar com um{" "}
-            <span className="text-gradient-accent">Robô</span>
+            <span className="text-gradient-primary">Robô</span>
           </h2>
           <p className="text-xl text-white/70 max-w-3xl mx-auto">
             E você não quer perder dinheiro com processos ineficientes. Reconhece algum desses problemas?
