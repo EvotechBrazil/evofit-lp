@@ -25,7 +25,7 @@ const features = [
 
 const SolutionSection = () => {
   return (
-    <section className="py-20">
+    <section className="py-20" id="solucoes-detail">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-slide-up">
           <div className="inline-block mb-4 px-4 py-2 bg-success/10 rounded-full">

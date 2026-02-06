@@ -29,14 +29,14 @@ const problems = [
 
 const ProblemSection = () => {
   return (
-    <section className="py-20 bg-secondary/30">
+    <section className="py-20 bg-[hsl(220_25%_6%)] text-white" id="solucoes">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Seu Cliente Não Quer Falar com um{" "}
             <span className="text-gradient-accent">Robô</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-white/70 max-w-3xl mx-auto">
             E você não quer perder dinheiro com processos ineficientes. Reconhece algum desses problemas?
           </p>
         </div>
@@ -47,7 +47,7 @@ const ProblemSection = () => {
             return (
               <div 
                 key={index}
-                className="glass-card p-8 hover-lift animate-fade-in"
+                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl shadow-lg p-8 hover-lift animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-start gap-4">
@@ -56,7 +56,7 @@ const ProblemSection = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-bold mb-2">{problem.title}</h3>
-                    <p className="text-muted-foreground mb-3">{problem.description}</p>
+                    <p className="text-white/70 mb-3">{problem.description}</p>
                     <div className="inline-block px-3 py-1 bg-destructive/10 rounded-full">
                       <span className="text-sm font-semibold text-destructive">{problem.impact}</span>
                     </div>
@@ -68,7 +68,7 @@ const ProblemSection = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-white/60">
             Cada dia sem uma solução real é dinheiro deixado na mesa.
           </p>
         </div>

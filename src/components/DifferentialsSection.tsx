@@ -57,7 +57,7 @@ const DifferentialsSection = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg mb-4">
-                  <Icon className="w-6 h-6 text-white" />
+                  <Icon className="w-6 h-6 text-primary-foreground" />
                 </div>
                 <h3 className="text-xl font-bold mb-3">{differential.title}</h3>
                 <p className="text-muted-foreground">{differential.description}</p>

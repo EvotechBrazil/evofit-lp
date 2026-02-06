@@ -30,7 +30,7 @@ const steps = [
 
 const ProcessSection = () => {
   return (
-    <section className="py-20">
+    <section className="py-20" id="como-funciona">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -69,7 +69,7 @@ const ProcessSection = () => {
                     {/* Icon */}
                     <div className="relative z-10 flex-shrink-0">
                       <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center shadow-lg">
-                        <Icon className="w-8 h-8 text-white" />
+                        <Icon className="w-8 h-8 text-primary-foreground" />
                       </div>
                       <div className="absolute -top-2 -right-2 w-8 h-8 bg-background rounded-full flex items-center justify-center border-2 border-primary shadow-md">
                         <span className="text-sm font-bold text-primary">{index + 1}</span>

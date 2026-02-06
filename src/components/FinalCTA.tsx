@@ -12,7 +12,7 @@ const benefits = [
 
 const FinalCTA = () => {
   return (
-    <section className="py-20 bg-gradient-to-br from-primary via-accent to-primary">
+    <section className="py-20 bg-gradient-to-br from-[hsl(210_85%_35%)] via-[hsl(210_70%_30%)] to-[hsl(220_25%_12%)]">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-4xl md:text-6xl font-bold mb-6 animate-slide-up">
@@ -23,7 +23,7 @@ const FinalCTA = () => {
             transformar seu atendimento em uma máquina de resultados.
           </p>
 
-          <div className="glass-card p-8 md:p-12 text-foreground max-w-2xl mx-auto mb-8">
+          <div className="bg-card/95 backdrop-blur-sm border border-border rounded-xl p-8 md:p-12 text-foreground max-w-2xl mx-auto mb-8 shadow-2xl">
             <form className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="text-left">
@@ -47,7 +47,7 @@ const FinalCTA = () => {
                 </div>
               </div>
 
-              <Button variant="hero" size="lg" className="w-full text-lg h-14">
+              <Button variant="accent" size="lg" className="w-full text-lg h-14">
                 Agendar Demonstração Gratuita
                 <ArrowRight className="ml-2" />
               </Button>
@@ -61,7 +61,7 @@ const FinalCTA = () => {
                 className="flex items-center gap-2 text-white/90 animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />
                 <span className="text-sm">{benefit}</span>
               </div>
             ))}
