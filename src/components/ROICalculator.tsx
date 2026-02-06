@@ -24,7 +24,7 @@ const ROICalculator = () => {
   const totalMonthlyBenefit = monthlySavings + revenueIncrease;
 
   return (
-    <section className="py-20 bg-gradient-to-br from-primary/5 via-accent/5 to-background">
+    <section className="py-20 bg-secondary/50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12 animate-slide-up">
           <div className="inline-block mb-4 px-4 py-2 bg-success/10 rounded-full">
@@ -86,7 +86,7 @@ const ROICalculator = () => {
 
             {/* Results */}
             <div className="space-y-6">
-              <div className="bg-gradient-to-br from-success to-success-light p-6 rounded-xl text-white">
+              <div className="bg-gradient-to-br from-success to-success-light p-6 rounded-xl text-success-foreground">
                 <div className="flex items-center gap-2 mb-2">
                   <DollarSign className="w-5 h-5" />
                   <span className="text-sm font-semibold opacity-90">Economia Mensal</span>
@@ -99,7 +99,7 @@ const ROICalculator = () => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-primary to-primary-light p-6 rounded-xl text-white">
+              <div className="bg-gradient-to-br from-primary to-primary-light p-6 rounded-xl text-primary-foreground">
                 <div className="flex items-center gap-2 mb-2">
                   <TrendingUp className="w-5 h-5" />
                   <span className="text-sm font-semibold opacity-90">Aumento de Receita</span>
@@ -112,7 +112,7 @@ const ROICalculator = () => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-accent to-accent-light p-6 rounded-xl text-white">
+              <div className="bg-gradient-to-br from-accent to-accent-light p-6 rounded-xl text-accent-foreground">
                 <div className="text-sm font-semibold opacity-90 mb-2">Benefício Total Mensal</div>
                 <div className="text-5xl font-bold">
                   R$ {totalMonthlyBenefit.toLocaleString('pt-BR')}

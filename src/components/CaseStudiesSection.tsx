@@ -35,7 +35,7 @@ const cases = [
 
 const CaseStudiesSection = () => {
   return (
-    <section className="py-20 bg-secondary/30">
+    <section className="py-20 bg-[hsl(220_25%_6%)] text-white" id="casos">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-slide-up">
           <div className="inline-block mb-4 px-4 py-2 bg-success/10 rounded-full">
@@ -45,7 +45,7 @@ const CaseStudiesSection = () => {
             Resultados que{" "}
             <span className="text-gradient-accent">Falam por Si</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-white/70 max-w-3xl mx-auto">
             Números reais de clientes reais. Sem exageros, sem promessas vazias.
           </p>
         </div>
@@ -54,29 +54,29 @@ const CaseStudiesSection = () => {
           {cases.map((caseStudy, index) => (
             <div 
               key={index}
-              className="glass-card p-8 hover-lift animate-fade-in"
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl shadow-lg p-8 hover-lift animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="mb-6">
-                <div className="inline-block px-3 py-1 bg-primary/10 rounded-full mb-3">
-                  <span className="text-sm font-semibold text-primary">{caseStudy.sector}</span>
+                <div className="inline-block px-3 py-1 bg-primary/20 rounded-full mb-3">
+                  <span className="text-sm font-semibold text-primary-light">{caseStudy.sector}</span>
                 </div>
                 <h3 className="text-xl font-bold mb-2">Desafio</h3>
-                <p className="text-muted-foreground mb-4">{caseStudy.challenge}</p>
+                <p className="text-white/70 mb-4">{caseStudy.challenge}</p>
                 <h3 className="text-xl font-bold mb-2">Solução</h3>
-                <p className="text-muted-foreground">{caseStudy.solution}</p>
+                <p className="text-white/70">{caseStudy.solution}</p>
               </div>
 
-              <div className="pt-6 border-t border-border">
+              <div className="pt-6 border-t border-white/10">
                 <p className="text-sm font-semibold text-muted-foreground mb-4">RESULTADOS</p>
                 <div className="grid grid-cols-3 gap-4">
                   {caseStudy.results.map((result, idx) => {
                     const Icon = result.icon;
                     return (
-                      <div key={idx} className="text-center p-4 bg-background/50 rounded-lg">
-                        <Icon className="w-6 h-6 text-success mx-auto mb-2" />
-                        <div className="text-2xl font-bold text-success mb-1">{result.metric}</div>
-                        <div className="text-sm text-muted-foreground">{result.label}</div>
+                      <div key={idx} className="text-center p-4 bg-white/5 rounded-lg">
+                        <Icon className="w-6 h-6 text-accent mx-auto mb-2" />
+                        <div className="text-2xl font-bold text-accent mb-1">{result.metric}</div>
+                        <div className="text-sm text-white/60">{result.label}</div>
                       </div>
                     );
                   })}

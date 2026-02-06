@@ -35,17 +35,17 @@ const technologies = [
 
 const TechStackSection = () => {
   return (
-    <section className="py-20 bg-secondary/30">
+    <section className="py-20 bg-[hsl(220_25%_6%)] text-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-slide-up">
           <div className="inline-block mb-4 px-4 py-2 bg-primary/10 rounded-full">
-            <span className="text-sm font-semibold text-primary">Stack Tecnológica</span>
+            <span className="text-sm font-semibold text-primary-light">Stack Tecnológica</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Construído com as{" "}
             <span className="text-gradient-accent">Melhores Ferramentas</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-white/70 max-w-3xl mx-auto">
             Usamos apenas tecnologias comprovadas e líderes de mercado. Nada experimental, nada arriscado.
           </p>
         </div>
@@ -56,14 +56,14 @@ const TechStackSection = () => {
             return (
               <div 
                 key={index}
-                className="glass-card p-6 hover-lift animate-fade-in text-center"
+                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl shadow-lg p-6 hover-lift animate-fade-in text-center"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-xl mb-4">
-                  <Icon className="w-8 h-8 text-primary" />
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-xl mb-4">
+                  <Icon className="w-8 h-8 text-primary-light" />
                 </div>
                 <h3 className="text-lg font-bold mb-2">{tech.name}</h3>
-                <p className="text-sm text-muted-foreground">{tech.description}</p>
+                <p className="text-sm text-white/60">{tech.description}</p>
               </div>
             );
           })}
