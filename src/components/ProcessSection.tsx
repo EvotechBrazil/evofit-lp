@@ -45,7 +45,7 @@ const ProcessSection = () => {
         <div className="max-w-5xl mx-auto">
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-success" />
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary-light to-primary-dark" />
 
             {steps.map((step, index) => {
               const Icon = step.icon;
@@ -68,7 +68,7 @@ const ProcessSection = () => {
 
                     {/* Icon */}
                     <div className="relative z-10 flex-shrink-0">
-                      <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center shadow-lg">
+                      <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-light rounded-full flex items-center justify-center shadow-lg">
                         <Icon className="w-8 h-8 text-primary-foreground" />
                       </div>
                       <div className="absolute -top-2 -right-2 w-8 h-8 bg-background rounded-full flex items-center justify-center border-2 border-primary shadow-md">

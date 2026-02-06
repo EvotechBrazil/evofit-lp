@@ -47,7 +47,7 @@ const FinalCTA = () => {
                 </div>
               </div>
 
-              <Button variant="accent" size="lg" className="w-full text-lg h-14">
+              <Button variant="hero" size="lg" className="w-full text-lg h-14">
                 Agendar Demonstração Gratuita
                 <ArrowRight className="ml-2" />
               </Button>
@@ -61,7 +61,7 @@ const FinalCTA = () => {
                 className="flex items-center gap-2 text-white/90 animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-primary-light flex-shrink-0" />
                 <span className="text-sm">{benefit}</span>
               </div>
             ))}

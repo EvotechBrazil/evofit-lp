@@ -9,17 +9,16 @@ const ROICalculator = () => {
   const [costPerInteraction, setCostPerInteraction] = useState(15);
   const [conversionRate, setConversionRate] = useState(2);
 
-  // Cálculos
   const currentMonthlyCost = monthlyInteractions * costPerInteraction;
-  const aiMonthlyCost = monthlyInteractions * 0.5; // Custo estimado com IA
+  const aiMonthlyCost = monthlyInteractions * 0.5;
   const monthlySavings = currentMonthlyCost - aiMonthlyCost;
   const annualSavings = monthlySavings * 12;
 
   const currentConversions = (monthlyInteractions * conversionRate) / 100;
-  const improvedConversionRate = conversionRate * 1.5; // 50% de melhoria
+  const improvedConversionRate = conversionRate * 1.5;
   const newConversions = (monthlyInteractions * improvedConversionRate) / 100;
   const additionalConversions = newConversions - currentConversions;
-  const revenueIncrease = additionalConversions * 200; // Ticket médio R$ 200
+  const revenueIncrease = additionalConversions * 200;
 
   const totalMonthlyBenefit = monthlySavings + revenueIncrease;
 
@@ -32,7 +31,7 @@ const ROICalculator = () => {
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Quanto Você Pode{" "}
-            <span className="text-gradient-accent">Economizar e Ganhar</span>
+            <span className="text-gradient-primary">Economizar e Ganhar</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Descubra o impacto financeiro real da automação inteligente no seu negócio
@@ -112,7 +111,7 @@ const ROICalculator = () => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-accent to-accent-light p-6 rounded-xl text-accent-foreground">
+              <div className="bg-gradient-to-br from-primary-dark to-primary p-6 rounded-xl text-primary-foreground">
                 <div className="text-sm font-semibold opacity-90 mb-2">Benefício Total Mensal</div>
                 <div className="text-5xl font-bold">
                   R$ {totalMonthlyBenefit.toLocaleString('pt-BR')}
