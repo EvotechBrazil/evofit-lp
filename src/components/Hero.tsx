@@ -5,11 +5,14 @@ import evotechLogo from "@/assets/evotech-logo.png";
 const Hero = () => {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-foreground via-[hsl(220_25%_12%)] to-[hsl(210_40%_15%)]">
-      {/* Background Logo Image */}
-      <div 
-        className="absolute inset-0 bg-contain bg-center bg-no-repeat opacity-[0.06]"
-        style={{ backgroundImage: `url(${evotechLogo})` }}
-      />
+      {/* Background Logo Watermark - Centered */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-[0.06]">
+        <img 
+          src={evotechLogo} 
+          alt="" 
+          className="w-[500px] h-[500px] md:w-[600px] md:h-[600px] lg:w-[700px] lg:h-[700px] object-contain"
+        />
+      </div>
 
       {/* Navigation */}
       <nav className="absolute top-0 left-0 right-0 z-20 py-4">
@@ -38,9 +41,11 @@ const Hero = () => {
           </div>
           
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white">
-            Agentes de IA que Seus Clientes{" "}
-            <span className="text-gradient-primary">Pensam Ser Humanos</span>
+            Agentes de IA que Seus Clientes
           </h1>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+            <span className="text-gradient-primary">Pensam Ser Humanos</span>
+          </h2>
           
           <p className="text-xl md:text-2xl text-white/70 mb-8 max-w-2xl mx-auto">
             Não vendemos tecnologia. Entregamos resultados através de IA humanizada que realmente funciona.
@@ -58,17 +63,15 @@ const Hero = () => {
           </div>
 
           {/* Social proof */}
-          <div className="flex items-center gap-6 justify-center text-sm">
+          <div className="flex items-center gap-8 md:gap-12 justify-center text-sm">
             <div>
               <div className="text-2xl font-bold text-primary-light">750mil+</div>
               <div className="text-white/60">Interações/mês</div>
             </div>
-            <div className="h-12 w-px bg-white/20" />
             <div>
               <div className="text-2xl font-bold text-success">94%</div>
               <div className="text-white/60">Taxa de sucesso</div>
             </div>
-            <div className="h-12 w-px bg-white/20" />
             <div>
               <div className="text-2xl font-bold text-primary-light">24/7</div>
               <div className="text-white/60">Disponibilidade</div>
