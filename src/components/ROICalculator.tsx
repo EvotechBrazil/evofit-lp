@@ -3,8 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowRight, TrendingUp, DollarSign } from "lucide-react";
+import { useLeadModal } from "@/components/LeadCaptureModal";
 
 const ROICalculator = () => {
+  const { openLeadModal } = useLeadModal();
   const [monthlyInteractions, setMonthlyInteractions] = useState(5000);
   const [costPerInteraction, setCostPerInteraction] = useState(15);
   const [conversionRate, setConversionRate] = useState(2);
@@ -124,7 +126,7 @@ const ROICalculator = () => {
             <p className="text-muted-foreground mb-4">
               Esses números são estimativas conservadoras baseadas em casos reais dos nossos clientes.
             </p>
-            <Button variant="hero" size="lg">
+            <Button variant="hero" size="lg" onClick={openLeadModal}>
               Agende uma Análise Personalizada
               <ArrowRight className="ml-2" />
             </Button>
