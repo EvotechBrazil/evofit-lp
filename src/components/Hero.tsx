@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
-import evotechLogo from "@/assets/evotech-logo.png";
+import watermarkLogo from "@/assets/watermark-logo.png";
 
 const Hero = () => {
   return (
@@ -8,7 +8,7 @@ const Hero = () => {
       {/* Background Logo Watermark - Centered */}
       <div className="absolute inset-0 flex items-center justify-center opacity-[0.06]">
         <img 
-          src={evotechLogo} 
+          src={watermarkLogo} 
           alt="" 
           className="w-[500px] h-[500px] md:w-[600px] md:h-[600px] lg:w-[700px] lg:h-[700px] object-contain"
         />
