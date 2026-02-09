@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import watermarkLogo from "@/assets/watermark-logo.png";
+import { useLeadModal } from "@/components/LeadCaptureModal";
 
 const Hero = () => {
+  const { openLeadModal } = useLeadModal();
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-foreground via-[hsl(220_25%_12%)] to-[hsl(210_40%_15%)]">
       {/* Background Logo Watermark - Centered */}
@@ -22,7 +24,7 @@ const Hero = () => {
             <a href="#solucoes" className="text-sm font-medium text-white/80 hover:text-primary-light transition-colors">Soluções</a>
             <a href="#como-funciona" className="text-sm font-medium text-white/80 hover:text-primary-light transition-colors">Como Funciona</a>
             <a href="#casos" className="text-sm font-medium text-white/80 hover:text-primary-light transition-colors">Casos de Sucesso</a>
-            <Button variant="hero" size="sm">Fale Conosco</Button>
+            <Button variant="hero" size="sm" onClick={openLeadModal}>Fale Conosco</Button>
           </div>
         </div>
       </nav>
@@ -52,11 +54,11 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button variant="hero" size="lg" className="group">
+            <Button variant="hero" size="lg" className="group" onClick={openLeadModal}>
               Agende uma Demonstração
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="outline" size="lg" className="group border-white/30 text-white hover:bg-white/10 hover:text-white">
+            <Button variant="outline" size="lg" className="group border-white/30 text-white hover:bg-white/10 hover:text-white" onClick={openLeadModal}>
               <Play className="mr-2 group-hover:scale-110 transition-transform" />
               Ver Como Funciona
             </Button>

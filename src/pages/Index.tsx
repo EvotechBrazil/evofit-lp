@@ -9,22 +9,25 @@ import ROICalculator from "@/components/ROICalculator";
 import FAQSection from "@/components/FAQSection";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
+import { LeadModalProvider } from "@/components/LeadCaptureModal";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
-      <Hero />
-      <ProblemSection />
-      <SolutionSection />
-      <TechStackSection />
-      <ProcessSection />
-      <CaseStudiesSection />
-      <DifferentialsSection />
-      <ROICalculator />
-      <FAQSection />
-      <FinalCTA />
-      <Footer />
-    </div>
+    <LeadModalProvider>
+      <div className="min-h-screen">
+        <Hero />
+        <ProblemSection />
+        <SolutionSection />
+        <TechStackSection />
+        <ProcessSection />
+        <CaseStudiesSection />
+        <DifferentialsSection />
+        <ROICalculator />
+        <FAQSection />
+        <FinalCTA />
+        <Footer />
+      </div>
+    </LeadModalProvider>
   );
 };
 

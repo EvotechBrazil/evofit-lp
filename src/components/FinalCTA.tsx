@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { useLeadModal } from "@/components/LeadCaptureModal";
 
 const benefits = [
   "Demonstração gratuita de 30 minutos",
@@ -11,6 +10,8 @@ const benefits = [
 ];
 
 const FinalCTA = () => {
+  const { openLeadModal } = useLeadModal();
+
   return (
     <section className="py-20 bg-gradient-to-br from-[hsl(210_85%_35%)] via-[hsl(210_70%_30%)] to-[hsl(220_25%_12%)]">
       <div className="container mx-auto px-4">
@@ -23,36 +24,10 @@ const FinalCTA = () => {
             transformar seu atendimento em uma máquina de resultados.
           </p>
 
-          <div className="bg-card/95 backdrop-blur-sm border border-border rounded-xl p-8 md:p-12 text-foreground max-w-2xl mx-auto mb-8 shadow-2xl">
-            <form className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="text-left">
-                  <Label htmlFor="name" className="mb-2 block">Nome Completo</Label>
-                  <Input id="name" placeholder="Seu nome" className="h-12" />
-                </div>
-                <div className="text-left">
-                  <Label htmlFor="company" className="mb-2 block">Empresa</Label>
-                  <Input id="company" placeholder="Nome da empresa" className="h-12" />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="text-left">
-                  <Label htmlFor="email" className="mb-2 block">Email Corporativo</Label>
-                  <Input id="email" type="email" placeholder="seu@email.com" className="h-12" />
-                </div>
-                <div className="text-left">
-                  <Label htmlFor="phone" className="mb-2 block">WhatsApp</Label>
-                  <Input id="phone" type="tel" placeholder="(00) 00000-0000" className="h-12" />
-                </div>
-              </div>
-
-              <Button variant="hero" size="lg" className="w-full text-lg h-14">
-                Agendar Demonstração Gratuita
-                <ArrowRight className="ml-2" />
-              </Button>
-            </form>
-          </div>
+          <Button variant="hero" size="lg" className="text-lg h-14 px-12 mb-12" onClick={openLeadModal}>
+            Agendar Demonstração Gratuita
+            <ArrowRight className="ml-2" />
+          </Button>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             {benefits.map((benefit, index) => (
