@@ -33,9 +33,9 @@ const P = {
   ink: '#17191c',
   navy: '#0a1526',
   navy3: '#0d1e38',
-  /* "nosso azul" (Tiago 07/07, 3ª calibragem): escuro mas CLARAMENTE azul —
-     ponto médio entre o azul elétrico da marca (#2277ee) e o navy do login (#0a1526) */
-  blue: '#16468a',
+  /* "nosso azul" (Tiago 07/07, calibragem final): o tom da BOLHA do chat dark
+     (imagem 4 amostrada ≈ #142132) — azul-aço escuro #152238 */
+  blue: '#152238',
   orange: '#f08020',
   orangeDeep: '#c85000',
   powder: '#dbe6f2',
@@ -178,10 +178,7 @@ export default function DsFusao() {
                 <span className="block uppercase" style={{ color: P.blue }}>
                   A evolução
                 </span>
-                <span
-                  className="block uppercase"
-                  style={{ color: 'transparent', WebkitTextStroke: `2px ${P.blue}` }}
-                >
+                <span className="block uppercase" style={{ color: P.blue }}>
                   em gestão
                 </span>
                 <span className="block uppercase">
@@ -311,7 +308,7 @@ export default function DsFusao() {
               className="fade-up group relative overflow-hidden bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               style={{ animationDelay: `${i * 0.05}s`, borderTop: `4px solid ${P.orange}` }}
             >
-              <span className="absolute right-4 top-3 text-3xl italic" style={{ ...black, color: '#16468a1c' }}>
+              <span className="absolute right-4 top-3 text-3xl italic" style={{ ...black, color: '#15223820' }}>
                 {String(i + 1).padStart(2, '0')}
               </span>
               <span className="flex h-11 w-11 items-center justify-center rounded-full" style={{ background: `${P.orange}1a`, color: P.orangeDeep }}>
@@ -365,7 +362,7 @@ export default function DsFusao() {
               {[
                 ['#f6f8fb', 'paper'],
                 ['#dbe6f2', 'powder'],
-                ['#16468a', 'azul EvoFit'],
+                ['#152238', 'azul EvoFit'],
                 ['#f08020', 'orange'],
                 ['#0a1526', 'navy'],
               ].map(([hex, name]) => (
@@ -410,8 +407,8 @@ export default function DsFusao() {
             <p className="mt-6 text-sm font-semibold" style={{ color: P.orangeDeep }}>Assinaturas visuais</p>
             <p className="mt-2 text-[13px] leading-relaxed" style={{ color: P.muted }}>
               Canvas arredondados claros e navy alternados · sombra dura laranja nos botões azuis
-              · display em azul escuro (sólido + outline) · marquee laranja · watermark itálico ·
-              float cards com filete laranja · numerais itálicos gigantes.
+              · display sólido em azul-aço · marca-texto laranja · marquee laranja · watermark
+              itálico · float cards com filete laranja · numerais itálicos gigantes.
             </p>
           </div>
         </div>
