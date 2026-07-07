@@ -33,6 +33,8 @@ const P = {
   ink: '#17191c',
   navy: '#0a1526',
   navy3: '#0d1e38',
+  blue: '#2277ee',
+  blueDeep: '#1257c4',
   orange: '#f08020',
   orangeDeep: '#c85000',
   powder: '#dbe6f2',
@@ -42,15 +44,23 @@ const P = {
 const body = { fontFamily: 'var(--font-instrument)' } as const;
 const black = { fontFamily: 'var(--font-archivo-black)' } as const;
 
-/* Botão assinatura da Fusão: retângulo preto editorial + sombra dura laranja (kinetic) */
-function BtnFusion({ children, invert = false }: { children: React.ReactNode; invert?: boolean }) {
+/* Botão assinatura da Fusão: retângulo AZUL EvoFit + sombra dura laranja (kinetic) */
+function BtnFusion({
+  children,
+  invert = false,
+  shadow,
+}: {
+  children: React.ReactNode;
+  invert?: boolean;
+  shadow?: string;
+}) {
   return (
     <button
       className="inline-flex cursor-pointer items-center gap-2.5 px-7 py-3.5 text-[14px] font-semibold transition-transform duration-200 hover:-translate-y-0.5"
       style={{
-        background: invert ? '#ffffff' : P.ink,
-        color: invert ? P.ink : '#ffffff',
-        boxShadow: `5px 5px 0 ${P.orange}`,
+        background: invert ? '#ffffff' : P.blue,
+        color: invert ? P.blue : '#ffffff',
+        boxShadow: `5px 5px 0 ${shadow ?? P.orange}`,
         ...body,
       }}
     >
@@ -121,7 +131,7 @@ export default function DsFusao() {
       {/* NAV */}
       <header className="sticky top-0 z-30 border-b border-black/6 bg-white/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <EvoFitWordmarkMono className="text-xl" color={P.ink} accent={P.orange} />
+          <EvoFitWordmarkMono className="text-xl" color={P.blue} accent={P.orange} />
           <nav className="hidden items-center gap-8 text-[13.5px] font-medium md:flex" style={{ color: P.muted }}>
             <span className="cursor-pointer transition-colors hover:text-black">Funcionalidades</span>
             <span className="cursor-pointer transition-colors hover:text-black">IA de Vendas</span>
@@ -130,7 +140,7 @@ export default function DsFusao() {
           </nav>
           <button
             className="cursor-pointer px-5 py-2.5 text-[13px] font-semibold text-white transition-transform hover:-translate-y-0.5"
-            style={{ background: P.ink, boxShadow: `4px 4px 0 ${P.orange}` }}
+            style={{ background: P.blue, boxShadow: `4px 4px 0 ${P.orange}` }}
           >
             {CTA_PRIMARY}
           </button>
@@ -155,7 +165,7 @@ export default function DsFusao() {
           <div className="fade-up relative flex justify-center md:justify-start">
             <span
               className="inline-flex -skew-x-6 items-center px-4 py-1.5 text-[11.5px] font-bold uppercase tracking-[0.16em] text-white"
-              style={{ background: P.ink }}
+              style={{ background: P.blue }}
             >
               <span className="inline-block skew-x-6">Sistema de gestão com IA ⚡ Evotech System</span>
             </span>
@@ -164,12 +174,12 @@ export default function DsFusao() {
           <div className="relative mt-10 grid items-center gap-12 md:mt-8 md:grid-cols-[1.2fr_auto] md:gap-8">
             <div className="text-center md:text-left">
               <h1 className="text-[2.7rem] italic leading-[0.98] md:text-[4.3rem]" style={black}>
-                <span className="block uppercase" style={{ color: P.ink }}>
+                <span className="block uppercase" style={{ color: P.blue }}>
                   A evolução
                 </span>
                 <span
                   className="block uppercase"
-                  style={{ color: 'transparent', WebkitTextStroke: `2px ${P.ink}` }}
+                  style={{ color: 'transparent', WebkitTextStroke: `2px ${P.blue}` }}
                 >
                   em gestão
                 </span>
@@ -232,7 +242,7 @@ export default function DsFusao() {
             <div key={l} className={`px-6 text-center md:text-left ${i > 0 ? 'md:border-l md:border-[#d3dbe6]' : ''}`}>
               <p
                 className="text-[2.6rem] italic leading-none md:text-[3.2rem]"
-                style={{ ...black, color: i % 2 === 0 ? P.ink : P.orange }}
+                style={{ ...black, color: i % 2 === 0 ? P.blue : P.orange }}
               >
                 {v}
               </p>
@@ -300,7 +310,7 @@ export default function DsFusao() {
               className="fade-up group relative overflow-hidden bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               style={{ animationDelay: `${i * 0.05}s`, borderTop: `4px solid ${P.orange}` }}
             >
-              <span className="absolute right-4 top-3 text-3xl italic" style={{ ...black, color: '#17191c14' }}>
+              <span className="absolute right-4 top-3 text-3xl italic" style={{ ...black, color: '#2277ee1c' }}>
                 {String(i + 1).padStart(2, '0')}
               </span>
               <span className="flex h-11 w-11 items-center justify-center rounded-full" style={{ background: `${P.orange}1a`, color: P.orangeDeep }}>
@@ -315,9 +325,9 @@ export default function DsFusao() {
         </div>
       </section>
 
-      {/* DIFERENCIAIS — faixa ink */}
+      {/* DIFERENCIAIS — faixa navy (família do nosso azul) */}
       <section className="mx-auto max-w-[1240px] px-4 pb-20">
-        <div className="rounded-[2rem] px-6 py-14 md:px-14" style={{ background: P.ink, color: '#f2f4f7' }}>
+        <div className="rounded-[2rem] px-6 py-14 md:px-14" style={{ background: P.navy, color: '#f2f4f7' }}>
           <div className="grid gap-10 md:grid-cols-[1fr_1.4fr] md:items-center">
             <h2 className="text-3xl italic uppercase leading-[1.05] md:text-[2.5rem]" style={black}>
               O que só o<br />
@@ -344,7 +354,7 @@ export default function DsFusao() {
         </h2>
         <p className="mx-auto mt-2 max-w-lg text-center text-[13px]" style={{ color: P.muted }}>
           A mistura oficial: estrutura editorial clara (02) + ritmo claro↔navy e laranja (03) +
-          tipografia e energia kinetic (05).
+          tipografia e energia kinetic (05) — com o azul EvoFit no lugar do preto como cor de marca.
         </p>
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           <div className="bg-white p-6 shadow-sm" style={{ borderTop: `4px solid ${P.orange}` }}>
@@ -353,9 +363,9 @@ export default function DsFusao() {
               {[
                 ['#f6f8fb', 'paper'],
                 ['#dbe6f2', 'powder'],
-                ['#0a1526', 'navy'],
+                ['#2277ee', 'blue'],
                 ['#f08020', 'orange'],
-                ['#17191c', 'ink'],
+                ['#0a1526', 'navy'],
               ].map(([hex, name]) => (
                 <div key={hex} className="text-center">
                   <div className="h-14 w-full rounded-lg border border-black/8" style={{ background: hex }} />
@@ -368,9 +378,12 @@ export default function DsFusao() {
               ))}
             </div>
             <p className="mt-5 text-sm font-semibold" style={{ color: P.orangeDeep }}>Tipografia</p>
-            <p className="mt-2 text-2xl italic uppercase" style={black}>Archivo Black — display</p>
+            <p className="mt-2 text-2xl italic uppercase" style={{ ...black, color: P.blue }}>
+              Archivo Black — display
+            </p>
             <p className="text-[13px]" style={{ color: P.muted }}>
-              Instrument Sans — corpo · outline + marca-texto nas palavras-chave
+              Instrument Sans — corpo · display em azul EvoFit · outline + marca-texto nas
+              palavras-chave
             </p>
           </div>
           <div className="bg-white p-6 shadow-sm" style={{ borderTop: `4px solid ${P.orange}` }}>
@@ -379,13 +392,13 @@ export default function DsFusao() {
               <BtnFusion>Primário</BtnFusion>
               <button
                 className="cursor-pointer border-2 px-6 py-3 text-[14px] font-semibold"
-                style={{ borderColor: P.ink, color: P.ink }}
+                style={{ borderColor: P.blue, color: P.blue }}
               >
                 Secundário
               </button>
             </div>
             <div className="mt-5 flex flex-wrap gap-2">
-              <span className="-skew-x-6 px-3 py-1 text-[11px] font-bold uppercase text-white" style={{ background: P.ink }}>
+              <span className="-skew-x-6 px-3 py-1 text-[11px] font-bold uppercase text-white" style={{ background: P.blue }}>
                 <span className="inline-block skew-x-6">Em produção</span>
               </span>
               <span className="-skew-x-6 px-3 py-1 text-[11px] font-bold uppercase" style={{ background: P.orange, color: '#fff' }}>
@@ -394,9 +407,9 @@ export default function DsFusao() {
             </div>
             <p className="mt-6 text-sm font-semibold" style={{ color: P.orangeDeep }}>Assinaturas visuais</p>
             <p className="mt-2 text-[13px] leading-relaxed" style={{ color: P.muted }}>
-              Canvas arredondados claros e navy alternados · sombra dura laranja nos botões pretos ·
-              marquee laranja · watermark itálico · float cards com filete laranja · numerais
-              itálicos gigantes.
+              Canvas arredondados claros e navy alternados · sombra dura laranja nos botões AZUIS ·
+              display em azul EvoFit (sólido + outline) · marquee laranja · watermark itálico ·
+              float cards com filete laranja · numerais itálicos gigantes.
             </p>
           </div>
         </div>
@@ -423,12 +436,12 @@ export default function DsFusao() {
               {LEMA}
             </p>
             <div className="mt-8 flex justify-center">
-              <BtnFusion>{CTA_PRIMARY}</BtnFusion>
+              <BtnFusion shadow="#ffffff">{CTA_PRIMARY}</BtnFusion>
             </div>
           </div>
         </div>
         <footer className="flex items-center justify-between px-4 py-8 text-[12px]" style={{ color: P.muted }}>
-          <EvoFitWordmarkMono className="text-lg" color={P.ink} accent={P.orange} />
+          <EvoFitWordmarkMono className="text-lg" color={P.blue} accent={P.orange} />
           <span>EvoFit © 2026 — Evotech System</span>
         </footer>
       </section>
