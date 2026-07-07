@@ -2,19 +2,24 @@ import Link from 'next/link';
 
 const OPTIONS = [
   { href: '/', label: '⌂' },
-  { href: '/ds/1', label: '1 · Solar' },
-  { href: '/ds/2', label: '2 · Editorial' },
-  { href: '/ds/3', label: '3 · Contraste' },
-  { href: '/ds/4', label: '4 · Grafite' },
-  { href: '/ds/5', label: '5 · Kinetic' },
+  { href: '/ds/1', label: '1' },
+  { href: '/ds/2', label: '2★' },
+  { href: '/ds/3', label: '3★' },
+  { href: '/ds/4', label: '4' },
+  { href: '/ds/5', label: '5★' },
+  { href: '/ds/6', label: '6 Fusão' },
+  { href: '/ds/7', label: '7 Placar' },
+  { href: '/ds/8', label: '8 Aurora' },
+  { href: '/ds/9', label: '9 NavyEd' },
 ];
 
-/** Barra flutuante pra alternar entre os design systems de prévia (sai antes do go-live). */
+/** Barra flutuante pra alternar entre os design systems de prévia (sai antes do go-live).
+ *  ★ = favoritos do Tiago na 1ª rodada (2, 3, 5) — base da Fusão (6). */
 export function DsSwitcher({ current }: { current?: string }) {
   return (
     <nav
       aria-label="Alternar design system"
-      className="fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 items-center gap-1 rounded-full border border-white/15 bg-black/75 px-2 py-1.5 text-[11px] font-medium text-white shadow-2xl backdrop-blur-md"
+      className="fixed bottom-4 left-1/2 z-50 flex max-w-[96vw] -translate-x-1/2 flex-wrap items-center justify-center gap-1 rounded-2xl border border-white/15 bg-black/80 px-2 py-1.5 text-[11px] font-medium text-white shadow-2xl backdrop-blur-md"
     >
       {OPTIONS.map((opt) => {
         const active = current === opt.href;
