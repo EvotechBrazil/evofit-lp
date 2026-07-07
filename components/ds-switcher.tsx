@@ -1,20 +1,21 @@
 import Link from 'next/link';
 
 const OPTIONS = [
-  { href: '/', label: '⌂' },
+  { href: '/', label: 'LP ✓' },
+  { href: '/ds', label: '⌂' },
   { href: '/ds/1', label: '1' },
   { href: '/ds/2', label: '2★' },
   { href: '/ds/3', label: '3★' },
   { href: '/ds/4', label: '4' },
   { href: '/ds/5', label: '5★' },
-  { href: '/ds/6', label: '6 Fusão' },
-  { href: '/ds/7', label: '7 Placar' },
-  { href: '/ds/8', label: '8 Aurora' },
-  { href: '/ds/9', label: '9 NavyEd' },
+  { href: '/ds/6', label: '6 🏆' },
+  { href: '/ds/7', label: '7' },
+  { href: '/ds/8', label: '8' },
+  { href: '/ds/9', label: '9' },
 ];
 
-/** Barra flutuante pra alternar entre os design systems de prévia (sai antes do go-live).
- *  ★ = favoritos do Tiago na 1ª rodada (2, 3, 5) — base da Fusão (6). */
+/** Barra flutuante das PRÉVIAS de design system (páginas /ds/*, saem antes do go-live).
+ *  LP = landing oficial (Fusão) na raiz · ★ = favoritos da 1ª rodada · 🏆 = escolhido. */
 export function DsSwitcher({ current }: { current?: string }) {
   return (
     <nav

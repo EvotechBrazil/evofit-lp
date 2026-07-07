@@ -1,211 +1,120 @@
-import Link from 'next/link';
-import { Space_Grotesk } from 'next/font/google';
-import { EVO, EvoFitWordmark, Eyebrow } from '@/components/brand';
-import { SolarBackdrop } from '@/components/solar-backdrop';
+import type { Metadata } from 'next';
+import { archivoBlack, instrument, Marquee, P } from '@/components/fusion/theme';
+import { LeadModalProvider } from '@/components/lead/lead-modal';
+import { Nav } from '@/components/sections/nav';
+import { Hero } from '@/components/sections/hero';
+import { Stats } from '@/components/sections/stats';
+import { IaVendas } from '@/components/sections/ia-vendas';
+import { Murph } from '@/components/sections/murph';
+import { Modules } from '@/components/sections/modules';
+import { Integracoes } from '@/components/sections/integracoes';
+import { WhiteLabel } from '@/components/sections/white-label';
+import { Diferenciais } from '@/components/sections/diferenciais';
+import { Seguranca } from '@/components/sections/seguranca';
+import { ProvaSocial } from '@/components/sections/prova-social';
+import { Faq } from '@/components/sections/faq';
+import { FinalCta } from '@/components/sections/final-cta';
+import { Footer } from '@/components/sections/footer';
+import { MobileCta } from '@/components/sections/mobile-cta';
+import { FAQ, LEMA, SUB } from '@/content/site';
 
-const grotesk = Space_Grotesk({ subsets: ['latin'], weight: ['500', '600', '700'], variable: '--font-grotesk' });
-
-type System = {
-  n: string;
-  href: string;
-  name: string;
-  tone: string;
-  desc: string;
-  chip: string;
-  chip2: string;
-  badge?: string;
+export const metadata: Metadata = {
+  title: 'EvoFit — Sistema de gestão para academias com IA',
+  description: `${LEMA}: IA que vende no WhatsApp 24/7, agenda de aulas, financeiro completo, portal do aluno gamificado, catraca com reconhecimento facial e LGPD — com a marca da sua academia.`,
+  alternates: { canonical: 'https://evofit.tech' },
+  openGraph: {
+    type: 'website',
+    url: 'https://evofit.tech',
+    title: 'EvoFit — Sistema de gestão para academias com IA',
+    description: SUB,
+    siteName: 'EvoFit',
+    locale: 'pt_BR',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'EvoFit — Sistema de gestão para academias com IA',
+    description: SUB,
+  },
 };
 
-const ROUND2: System[] = [
+const jsonLd = [
   {
-    n: '06',
-    href: '/ds/6',
-    name: 'Fusão',
-    tone: 'A mistura oficial: 02 + 03 + 05',
-    desc: 'Base editorial clara com o azul-aço EvoFit (#152238) como cor de marca (display e botões), laranja como acento, seções navy e energia kinetic (itálicos, marquee, sombras duras).',
-    chip: '#152238',
-    chip2: '#f08020',
-    badge: '🏆 ESCOLHIDO',
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'EvoFit',
+    legalName: 'Evotech System',
+    url: 'https://evofit.tech',
+    logo: 'https://evofit.tech/logos/evofit_logo_clean.svg',
   },
   {
-    n: '07',
-    href: '/ds/7',
-    name: 'Placar',
-    tone: 'Esportivo editorial claro',
-    desc: 'Tipografia condensada uppercase, cantos retos, molduras 2px, placar preto com numerais tabulares. Revista de esporte.',
-    chip: '#f08020',
-    chip2: '#101113',
-    badge: 'NOVO',
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'EvoFit',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    description: `${LEMA}. ${SUB}`,
+    url: 'https://evofit.tech',
+    inLanguage: 'pt-BR',
   },
   {
-    n: '08',
-    href: '/ds/8',
-    name: 'Aurora',
-    tone: 'Claro premium com gradientes',
-    desc: 'Auroras suaves azul/laranja, vidro fosco, cantos bem arredondados, gradiente de marca nas palavras-chave. Amigável e high-end.',
-    chip: '#2277ee',
-    chip2: '#f08020',
-    badge: 'NOVO',
-  },
-  {
-    n: '09',
-    href: '/ds/9',
-    name: 'Navy Editorial',
-    tone: 'Estrutura Dentiva em navy da marca',
-    desc: 'O layout editorial do 02 (headline em camadas, watermark, float cards) vestido de navy escuro + canvas laranja quente.',
-    chip: '#4eaaee',
-    chip2: '#f08020',
-    badge: 'NOVO',
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQ.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
   },
 ];
 
-const ROUND1: System[] = [
-  {
-    n: '02',
-    href: '/ds/2',
-    name: 'Editorial Claro',
-    tone: 'Clean premium (ref. Dentiva)',
-    desc: 'Fundo claro, tipografia display gigante em camadas, botão preto, pills e números enormes.',
-    chip: '#567bae',
-    chip2: '#202224',
-    badge: '★ favorito',
-  },
-  {
-    n: '03',
-    href: '/ds/3',
-    name: 'Contraste',
-    tone: 'Híbrido claro × navy',
-    desc: 'Hero editorial claro + seções alternadas em navy escuro, com o laranja EvoFit como acento.',
-    chip: '#f08020',
-    chip2: '#0a1526',
-    badge: '★ favorito',
-  },
-  {
-    n: '05',
-    href: '/ds/5',
-    name: 'Kinetic',
-    tone: 'Energia esportiva',
-    desc: 'Itálicos pesados, diagonais, marquee e blocos laranja dominantes. Velocidade e treino.',
-    chip: '#f08020',
-    chip2: '#ffffff',
-    badge: '★ favorito',
-  },
-  {
-    n: '01',
-    href: '/ds/1',
-    name: 'Solar',
-    tone: 'Dark navy futurista',
-    desc: 'A marca EvoFit atual: órbitas animadas, glow azul + laranja, cards com borda em gradiente e glass.',
-    chip: '#2277ee',
-    chip2: '#f08020',
-  },
-  {
-    n: '04',
-    href: '/ds/4',
-    name: 'Grafite',
-    tone: 'Dark minimal high-tech',
-    desc: 'Quase-preto, hairlines, tipografia enorme e um único acento laranja. Sóbrio, estilo Linear/Vercel.',
-    chip: '#f08020',
-    chip2: '#27272a',
-  },
-];
-
-function Card({ s, i }: { s: System; i: number }) {
+export default function Landing() {
   return (
-    <Link
-      href={s.href}
-      className="fade-up group relative overflow-hidden rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1"
-      style={{
-        background: `linear-gradient(${EVO.navy2}, ${EVO.navy2}) padding-box, linear-gradient(135deg, ${s.chip}55, ${s.chip2}33) border-box`,
-        border: '1px solid transparent',
-        animationDelay: `${0.1 + i * 0.07}s`,
-      }}
+    <div
+      className={`${instrument.variable} ${archivoBlack.variable} min-h-screen`}
+      style={{ background: P.paper, color: P.ink, fontFamily: 'var(--font-instrument)' }}
     >
-      <div className="flex items-start justify-between">
-        <span className="text-4xl font-bold opacity-20" style={{ fontFamily: 'var(--font-grotesk)' }}>
-          {s.n}
-        </span>
-        <span className="flex items-center gap-2 pt-1">
-          {s.badge && (
-            <span
-              className="rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide"
-              style={{ background: `${EVO.orange}26`, color: EVO.orangeLight }}
-            >
-              {s.badge}
-            </span>
-          )}
-          <span className="flex gap-1.5">
-            <span className="h-3.5 w-3.5 rounded-full" style={{ background: s.chip }} />
-            <span className="h-3.5 w-3.5 rounded-full border border-white/20" style={{ background: s.chip2 }} />
-          </span>
-        </span>
-      </div>
-      <h2 className="mt-3 text-2xl font-semibold" style={{ fontFamily: 'var(--font-grotesk)' }}>
-        {s.name}
-      </h2>
-      <p className="text-[13px] font-medium" style={{ color: EVO.blueLight }}>
-        {s.tone}
-      </p>
-      <p className="mt-2 text-sm leading-relaxed" style={{ color: EVO.textMuted }}>
-        {s.desc}
-      </p>
-      <span
-        className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold transition-transform duration-300 group-hover:translate-x-1"
-        style={{ color: EVO.orange }}
-      >
-        Ver prévia →
-      </span>
-    </Link>
-  );
-}
-
-export default function Hub() {
-  return (
-    <main
-      className={`${grotesk.variable} relative min-h-screen overflow-hidden`}
-      style={{ background: EVO.navy, color: EVO.text }}
-    >
-      <SolarBackdrop scrim="soft" />
-
-      <div className="relative z-10 mx-auto max-w-5xl px-6 pb-28 pt-20 md:pt-28">
-        <div className="fade-up flex flex-col items-start gap-3">
-          <Eyebrow />
-          <EvoFitWordmark className="text-5xl md:text-6xl" />
-          <h1
-            className="mt-4 max-w-2xl text-2xl font-semibold leading-snug md:text-3xl"
-            style={{ fontFamily: 'var(--font-grotesk)' }}
-          >
-            Prévia dos design systems do novo site
-          </h1>
-          <p className="max-w-xl text-sm leading-relaxed md:text-base" style={{ color: EVO.textMuted }}>
-            Mesmo conteúdo, personalidades diferentes. Rodada 2: a <strong>Fusão</strong> mistura os
-            seus 3 favoritos (02 + 03 + 05) e vieram 3 direções novas na mesma vibe. Abra cada uma,
-            compare no celular também, e escolha a vencedora — dá pra misturar elementos.
-          </p>
-        </div>
-
-        <h2 className="mt-12 text-sm font-bold uppercase tracking-[0.25em]" style={{ color: EVO.orangeLight }}>
-          Rodada 2 · novas opções
-        </h2>
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          {ROUND2.map((s, i) => (
-            <Card key={s.href} s={s} i={i} />
-          ))}
-        </div>
-
-        <h2 className="mt-14 text-sm font-bold uppercase tracking-[0.25em]" style={{ color: EVO.blueLight }}>
-          Rodada 1 · ★ = seus favoritos
-        </h2>
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          {ROUND1.map((s, i) => (
-            <Card key={s.href} s={s} i={i} />
-          ))}
-        </div>
-
-        <p className="mt-10 text-center text-xs" style={{ color: EVO.textFaint }}>
-          Página interna de aprovação — sai do ar antes do lançamento do site.
-        </p>
-      </div>
-    </main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <LeadModalProvider>
+        <Nav />
+        <main>
+          <Hero />
+          <div className="mt-6">
+            <Marquee
+              items={[
+                'Venda no automático',
+                'Retenha mais alunos',
+                'Zero lead perdido',
+                'IA 24/7 no WhatsApp',
+              ]}
+            />
+          </div>
+          <Stats />
+          <IaVendas />
+          <Murph />
+          <Marquee
+            dark
+            items={[
+              'Cobrança que negocia',
+              'Anti-churn preditivo',
+              'Catraca facial',
+              'Contratos digitais',
+            ]}
+          />
+          <Modules />
+          <Integracoes />
+          <WhiteLabel />
+          <Diferenciais />
+          <Seguranca />
+          <ProvaSocial />
+          <Faq />
+          <FinalCta />
+        </main>
+        <Footer />
+        <MobileCta />
+      </LeadModalProvider>
+    </div>
   );
 }
