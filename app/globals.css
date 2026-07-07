@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+/* ════════════════════════════════════════════════════════════
+   EvoFit — tokens de marca (paleta EVO, fonte: brand.tsx do app)
+   + paleta editorial clara (referência Dentiva)
+   ════════════════════════════════════════════════════════════ */
+@theme {
+  /* EVO — sci-fi azul + laranja (marca atual) */
+  --color-evo-navy: #060e1c;
+  --color-evo-navy2: #0a1526;
+  --color-evo-navy3: #0d1e38;
+  --color-evo-blue: #2277ee;
+  --color-evo-blue-light: #4eaaee;
+  --color-evo-blue-glow: #66aaff;
+  --color-evo-orange: #f08020;
+  --color-evo-orange-light: #ffaa44;
+  --color-evo-orange-deep: #c85000;
+  --color-evo-text: #eaf1fb;
+  --color-evo-muted: #8aa0be;
+  --color-evo-faint: #5a6f8c;
+
+  /* Editorial claro (referência Dentiva) */
+  --color-paper: #f6f8fb;
+  --color-ink: #202224;
+  --color-steel: #567bae;
+  --color-steel-soft: #6c92c5;
+  --color-powder: #b4c8de;
+  --color-mist: #9caec4;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ─── SolarBackdrop (portado do login do EvoFit) ─────────── */
+@keyframes lp-rotate {
+  to { transform: rotate(360deg); }
+}
+@keyframes lp-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  50% { transform: translate(-50%, -50%) scale(1.08); opacity: 0.75; }
+}
+@keyframes lp-twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.5; }
+}
+@keyframes lp-ken {
+  0%   { transform: scale(1.08) translate(0, 0); }
+  50%  { transform: scale(1.16) translate(-1.5%, 1%); }
+  100% { transform: scale(1.08) translate(0, 0); }
+}
+.lp-rotate { animation-name: lp-rotate; animation-timing-function: linear; animation-iteration-count: infinite; }
+.lp-pulse { animation: lp-pulse 6s ease-in-out infinite; }
+.lp-twinkle { animation: lp-twinkle 5s ease-in-out infinite; }
+.lp-ken { animation: lp-ken 32s ease-in-out infinite; transform-origin: center 42%; }
+
+/* ─── Animações de entrada / utilitárias das prévias ─────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.fade-up { animation: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.3, 1) both; }
+
+@keyframes chat-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+.chat-in { animation: chat-in 0.45s ease-out both; }
+
+@keyframes typing-dot {
+  0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-3px); }
+}
+.typing-dot { animation: typing-dot 1.2s ease-in-out infinite; }
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.marquee { animation: marquee 28s linear infinite; }
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.float-y { animation: float-y 5s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-rotate, .lp-pulse, .lp-twinkle, .lp-ken, .marquee, .float-y, .typing-dot {
+    animation: none;
+  }
+  .fade-up, .chat-in {
+    animation-duration: 0.01s;
+    animation-delay: 0s !important;
+  }
+}

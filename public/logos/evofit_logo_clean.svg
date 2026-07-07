@@ -1,0 +1,125 @@
+<svg width="100%" viewBox="0 0 680 210" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>EvoFit logo em estilo metálico sci-fi</title>
+  <desc>Logo EvoFit com letras bold itálicas em estilo metálico azul e laranja, sobre fundo escuro com efeito de energia circular</desc>
+
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0d1e38" stop-opacity="1"/>
+      <stop offset="55%" stop-color="#060e1c" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#020608" stop-opacity="1"/>
+    </radialGradient>
+
+    <linearGradient id="evoGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f0f8ff"/>
+      <stop offset="20%" stop-color="#b8dcff"/>
+      <stop offset="50%" stop-color="#4eaaee"/>
+      <stop offset="75%" stop-color="#1a65b8"/>
+      <stop offset="100%" stop-color="#0a3068"/>
+    </linearGradient>
+
+    <linearGradient id="fitGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff5cc"/>
+      <stop offset="20%" stop-color="#ffd870"/>
+      <stop offset="50%" stop-color="#f08020"/>
+      <stop offset="75%" stop-color="#c85000"/>
+      <stop offset="100%" stop-color="#6a1c00"/>
+    </linearGradient>
+
+    <linearGradient id="shineEvo" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.30"/>
+      <stop offset="70%" stop-color="#ffffff" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Glow azul intensificado -->
+    <filter id="outerGlowBlue" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="8" result="blur1"/>
+      <feGaussianBlur stdDeviation="3" result="blur2"/>
+      <feFlood flood-color="#2277ee" flood-opacity="0.85" result="color1"/>
+      <feFlood flood-color="#66aaff" flood-opacity="0.4" result="color2"/>
+      <feComposite in="color1" in2="blur1" operator="in" result="glow1"/>
+      <feComposite in="color2" in2="blur2" operator="in" result="glow2"/>
+      <feMerge>
+        <feMergeNode in="glow1"/>
+        <feMergeNode in="glow2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Glow laranja intensificado -->
+    <filter id="outerGlowOrange" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="8" result="blur1"/>
+      <feGaussianBlur stdDeviation="3" result="blur2"/>
+      <feFlood flood-color="#e86510" flood-opacity="0.85" result="color1"/>
+      <feFlood flood-color="#ffaa44" flood-opacity="0.4" result="color2"/>
+      <feComposite in="color1" in2="blur1" operator="in" result="glow1"/>
+      <feComposite in="color2" in2="blur2" operator="in" result="glow2"/>
+      <feMerge>
+        <feMergeNode in="glow1"/>
+        <feMergeNode in="glow2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Pulso de energia no fundo -->
+    <radialGradient id="energyPulse" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a4a8a" stop-opacity="0.0"/>
+      <stop offset="45%" stop-color="#1a4a8a" stop-opacity="0.0"/>
+      <stop offset="65%" stop-color="#1a4a8a" stop-opacity="0.18"/>
+      <stop offset="80%" stop-color="#2266cc" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="680" height="210" fill="url(#bgGlow)" rx="12"/>
+
+  <!-- Pulso de energia -->
+  <ellipse cx="340" cy="105" rx="330" ry="100" fill="url(#energyPulse)"/>
+
+  <!-- Energy rings -->
+  <ellipse cx="340" cy="105" rx="310" ry="92" fill="none" stroke="#1a3a8a" stroke-width="0.7" stroke-opacity="0.5"/>
+  <ellipse cx="340" cy="105" rx="278" ry="78" fill="none" stroke="#1a3a8a" stroke-width="0.5" stroke-opacity="0.35"/>
+  <ellipse cx="340" cy="105" rx="245" ry="64" fill="none" stroke="#2255aa" stroke-width="0.3" stroke-opacity="0.25"/>
+
+  <!-- Horizontal light streak -->
+  <rect x="0" y="99" width="680" height="1.8" fill="url(#shineEvo)" opacity="0.6"/>
+  <rect x="0" y="108" width="680" height="0.6" fill="#1a5fa8" opacity="0.35"/>
+
+  <!-- Corner sparks - azul -->
+  <line x1="30" y1="30" x2="80" y2="30" stroke="#4a90dd" stroke-width="1" stroke-opacity="0.7"/>
+  <line x1="30" y1="30" x2="30" y2="70" stroke="#4a90dd" stroke-width="1" stroke-opacity="0.7"/>
+  <line x1="650" y1="30" x2="600" y2="30" stroke="#4a90dd" stroke-width="1" stroke-opacity="0.7"/>
+  <line x1="650" y1="30" x2="650" y2="70" stroke="#4a90dd" stroke-width="1" stroke-opacity="0.7"/>
+
+  <!-- Corner sparks - laranja -->
+  <line x1="30" y1="178" x2="80" y2="178" stroke="#e86510" stroke-width="1" stroke-opacity="0.6"/>
+  <line x1="30" y1="178" x2="30" y2="140" stroke="#e86510" stroke-width="1" stroke-opacity="0.6"/>
+  <line x1="650" y1="178" x2="600" y2="178" stroke="#e86510" stroke-width="1" stroke-opacity="0.6"/>
+  <line x1="650" y1="178" x2="650" y2="140" stroke="#e86510" stroke-width="1" stroke-opacity="0.6"/>
+
+  <!-- Sombra profunda -->
+  <text x="345" y="142" font-family="'Arial Black', 'Impact', sans-serif" font-size="112" font-weight="900" font-style="italic" text-anchor="middle" letter-spacing="-2" fill="#000820" opacity="0.9" transform="translate(5,5)">EvoFit</text>
+
+  <!-- EVO — azul metálico com glow forte -->
+  <text x="268" y="140" font-family="'Arial Black', 'Impact', sans-serif" font-size="112" font-weight="900" font-style="italic" text-anchor="middle" letter-spacing="-2" fill="url(#evoGrad)" filter="url(#outerGlowBlue)">Evo</text>
+
+  <!-- FIT — laranja metálico com glow forte -->
+  <text x="492" y="140" font-family="'Arial Black', 'Impact', sans-serif" font-size="112" font-weight="900" font-style="italic" text-anchor="middle" letter-spacing="-2" fill="url(#fitGrad)" filter="url(#outerGlowOrange)">Fit</text>
+
+  <!-- Divider line sutil -->
+  <line x1="185" y1="156" x2="495" y2="156" stroke="#2a5a9a" stroke-width="0.8" stroke-opacity="0.5"/>
+  <line x1="495" y1="156" x2="510" y2="156" stroke="#e86510" stroke-width="0.8" stroke-opacity="0.4"/>
+
+  <!-- Dots decorativos -->
+  <circle cx="160" cy="170" r="2.5" fill="#2266cc" opacity="0.8"/>
+  <circle cx="151" cy="170" r="1.8" fill="#2266cc" opacity="0.4"/>
+  <circle cx="520" cy="170" r="2.5" fill="#e86510" opacity="0.8"/>
+  <circle cx="529" cy="170" r="1.8" fill="#e86510" opacity="0.4"/>
+
+  <!-- Top label EVOTECH SYSTEM -->
+  <text x="340" y="32" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="middle" letter-spacing="6" fill="#5599dd" opacity="0.7">EVOTECH  SYSTEM</text>
+
+</svg>
