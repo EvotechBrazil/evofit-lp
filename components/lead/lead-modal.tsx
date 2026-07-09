@@ -3,6 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
 import { ArrowRight, Loader2, X } from 'lucide-react';
 import { P, black, body } from '@/components/fusion/theme';
+import { formatDocumento, onlyDigits, validateDocumento } from '@/lib/documento';
 
 /** Nº do WhatsApp comercial da Evotech. */
 const WHATSAPP_NUMBER = '5543999744359';
@@ -29,6 +30,7 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
+  const [documento, setDocumento] = useState('');
 
   const openLeadModal = useCallback(() => {
     setError('');
@@ -67,6 +69,16 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
       setError('Telefone incompleto.');
       return;
     }
+    const doc = onlyDigits(documento);
+    let tipoDocumento: 'cpf' | 'cnpj' | null = null;
+    if (doc) {
+      const res = validateDocumento(doc);
+      if (!res.valid) {
+        setError('CPF/CNPJ inválido.');
+        return;
+      }
+      tipoDocumento = res.tipo;
+    }
 
     setIsLoading(true);
     try {
@@ -77,6 +89,8 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
           nome: name.trim(),
           telefone: phone.trim(),
           email: email.trim(),
+          documento: doc,
+          tipoDocumento,
           timestamp: new Date().toISOString(),
           origem: window.location.origin,
         }),
@@ -86,6 +100,7 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
       setName('');
       setPhone('');
       setEmail('');
+      setDocumento('');
 
       const message = encodeURIComponent(
         `Olá! Meu nome é ${name.trim()}, quero conhecer o EvoFit para a minha academia.`
@@ -173,6 +188,20 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
                   placeholder="seu@email.com"
                   maxLength={255}
                   required
+                  className="h-12 w-full border-2 px-3.5 text-[14px] outline-none transition-colors focus:border-[#152238]"
+                  style={{ borderColor: '#e2e6ec', color: P.ink }}
+                />
+              </div>
+              <div>
+                <label htmlFor="lead-doc" className="mb-1.5 block text-[13px] font-semibold" style={{ color: P.ink }}>
+                  CPF ou CNPJ <span style={{ fontWeight: 400, color: P.muted }}>(opcional)</span>
+                </label>
+                <input
+                  id="lead-doc"
+                  value={documento}
+                  onChange={(e) => setDocumento(formatDocumento(e.target.value))}
+                  placeholder="000.000.000-00"
+                  inputMode="numeric"
                   className="h-12 w-full border-2 px-3.5 text-[14px] outline-none transition-colors focus:border-[#152238]"
                   style={{ borderColor: '#e2e6ec', color: P.ink }}
                 />

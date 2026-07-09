@@ -26,10 +26,13 @@ const SECTIONS: { title: string; body: React.ReactNode }[] = [
     body: (
       <>
         Ao preencher o formulário de demonstração, coletamos <strong>nome</strong>,{' '}
-        <strong>telefone/WhatsApp</strong> e <strong>e-mail</strong>, com a finalidade única de
-        entrar em contato comercial e agendar a demonstração que você solicitou (base legal:
-        execução de procedimentos preliminares a pedido do titular — art. 7º, V, da LGPD). Não
-        coletamos dados sensíveis e não usamos cookies de rastreamento de terceiros.
+        <strong>telefone/WhatsApp</strong>, <strong>e-mail</strong> e, opcionalmente,{' '}
+        <strong>CPF ou CNPJ</strong> (usado apenas como identificador para não duplicar o seu
+        cadastro). Usamos esses dados para entrar em contato comercial, agendar a demonstração que
+        você solicitou e, quando aplicável, retomar o contato caso a negociação não seja concluída
+        (base legal: execução de procedimentos preliminares a pedido do titular e legítimo
+        interesse comercial — art. 7º, V e IX, da LGPD). Não coletamos dados sensíveis e não usamos
+        cookies de rastreamento de terceiros.
       </>
     ),
   },
@@ -37,8 +40,9 @@ const SECTIONS: { title: string; body: React.ReactNode }[] = [
     title: '3. Com quem os dados são compartilhados',
     body: (
       <>
-        Os dados do formulário são recebidos pela nossa ferramenta interna de automação e pela
-        nossa equipe comercial. Ao concluir o envio, você é direcionado ao{' '}
+        Os dados do formulário são recebidos pela nossa ferramenta interna de automação e
+        armazenados em base de dados própria da Evotech System, acessíveis à nossa equipe
+        comercial. Ao concluir o envio, você é direcionado ao{' '}
         <strong>WhatsApp</strong> — a conversa a partir dali é regida pela política de privacidade
         do WhatsApp. Não vendemos nem cedemos seus dados a terceiros.
       </>

@@ -1,11 +1,16 @@
 import { NextResponse } from 'next/server';
+import { onlyDigits, validateDocumento } from '@/lib/documento';
 
 /**
  * Proxy server-side do formulário de lead → webhook n8n da Evotech.
  * (Substitui o fetch no-cors direto do client do site antigo: aqui dá pra
  * validar payload e observar falhas de entrega no log da função.)
+ *
+ * A URL do webhook pode ser sobrescrita pela env LEAD_WEBHOOK_URL (Vercel)
+ * sem precisar de deploy — o default aponta pro n8n atual da Evotech.
  */
-const WEBHOOK_URL = 'https://n8n-n8n.rte6ms.easypanel.host/webhook/formulario';
+const WEBHOOK_URL =
+  process.env.LEAD_WEBHOOK_URL ?? 'https://n8n.evotechsystem.cloud/webhook/formulario';
 
 export async function POST(req: Request) {
   let payload: Record<string, unknown>;
@@ -23,10 +28,23 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: 'invalid_fields' }, { status: 400 });
   }
 
+  // CPF/CNPJ é opcional; se vier, precisa ser válido (identificador do lead).
+  const documento = onlyDigits(String(payload.documento ?? ''));
+  let tipoDocumento: string | null = null;
+  if (documento) {
+    const res = validateDocumento(documento);
+    if (!res.valid) {
+      return NextResponse.json({ ok: false, error: 'invalid_documento' }, { status: 400 });
+    }
+    tipoDocumento = res.tipo;
+  }
+
   const body = JSON.stringify({
     nome,
     telefone,
     email,
+    documento: documento || null,
+    tipo_documento: tipoDocumento,
     timestamp: typeof payload.timestamp === 'string' ? payload.timestamp : new Date().toISOString(),
     origem: typeof payload.origem === 'string' ? payload.origem.slice(0, 200) : 'evofit.tech',
   });
