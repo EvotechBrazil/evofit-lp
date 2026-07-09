@@ -1,73 +1,66 @@
-# Welcome to your Lovable project
+# EvoFit — site de divulgação
 
-## Project info
+Landing page e captação de leads do **EvoFit**, a plataforma de gestão para academias com IA
+(_"A evolução em sistemas de gerenciamento para academias"_).
 
-**URL**: https://lovable.dev/projects/218ba8b4-f49a-4d59-a998-d7b23babc666
+Serve o apex **evofit.tech**. O painel administrativo vive em **www.evofit.tech** — rotas do
+painel que caem no apex (`/login`, `/member`, links de indicação `/r/:code`, etc.) são
+redirecionadas automaticamente em [`next.config.ts`](next.config.ts).
 
-## How can I edit this code?
+## Stack
 
-There are several ways of editing your application.
+- **Next.js 16** (App Router) + **React 19**
+- **Tailwind CSS 4** (via `@tailwindcss/postcss`)
+- **TypeScript**
+- **lucide-react** (ícones)
+- Deploy na **Vercel**
 
-**Use Lovable**
+## Rodando local
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/218ba8b4-f49a-4d59-a998-d7b23babc666) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Requer **Node.js 20+**.
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+npm install
+npm run dev      # servidor de desenvolvimento em http://localhost:3000
+npm run build    # build de produção
+npm run start    # sobe o build de produção
 ```
 
-**Edit a file directly in GitHub**
+## Estrutura
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+app/
+  page.tsx                    landing oficial (design "Fusão")
+  layout.tsx                  <html>, fontes, metadata base
+  api/lead/route.ts           proxy do formulário de lead → webhook n8n
+  politica-de-privacidade/    página LGPD
+  opengraph-image.tsx         imagem OG gerada
+  sitemap.ts · robots.ts      SEO
+components/
+  fusion/theme.tsx            design system "Fusão": tokens (cores, fontes) + componentes-base
+  sections/                   seções da landing (hero, ia-vendas, murph, modules, faq, ...)
+  lead/lead-modal.tsx         modal de captação de lead (client)
+  brand.tsx · chat-mock.tsx   wordmark e mock de conversa de WhatsApp
+content/
+  site.ts                     toda a copy do site (textos, chats, módulos, FAQ, stats)
+```
 
-**Use GitHub Codespaces**
+## Editando o conteúdo
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Praticamente todo o texto do site vive em [`content/site.ts`](content/site.ts) — copy,
+conversas da IA, módulos, integrações, FAQ e números. Dá pra iterar o conteúdo sem tocar no
+layout. Ajustes de cor/tipografia da marca ficam nos tokens em
+[`components/fusion/theme.tsx`](components/fusion/theme.tsx).
 
-## What technologies are used for this project?
+## Fluxo de lead
 
-This project is built with:
+O modal de demonstração envia o lead para [`/api/lead`](app/api/lead/route.ts), que valida os
+campos e repassa para o webhook do n8n da Evotech. Em seguida o visitante é levado ao WhatsApp
+comercial com a mensagem pré-preenchida. Se a entrega no webhook falhar, o lead ainda segue
+para o WhatsApp — a captação nunca é bloqueada.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Design
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/218ba8b4-f49a-4d59-a998-d7b23babc666) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+O site usa o design system **"Fusão"** (base editorial clara, azul-aço `#152238` como cor de
+marca, laranja como acento e seções navy com energia _kinetic_), escolhido entre as prévias
+exploradas durante o desenvolvimento.

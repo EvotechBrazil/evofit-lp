@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/ds', '/ds/', '/api/'],
+        disallow: ['/api/'],
       },
     ],
     sitemap: 'https://evofit.tech/sitemap.xml',
