@@ -291,6 +291,6 @@ export const FAQ = [
 export const PROVA_SOCIAL = {
   titulo: 'Nascido dentro de uma academia de verdade.',
   texto:
-    'O EvoFit não foi feito num escritório: ele roda todos os dias na operação real da CrossFit Arapongas — cerca de 2.000 alunos — e da Flow House. Cada funcionalidade nasceu de um problema real de gestão: o lead que chegava de madrugada, a notinha do mercado perdida, o aluno que sumia sem ninguém perceber.',
+    'Projetado para a operação real de academias, centros de treinamento, Studios... testado e validado em ambiente real. Cada funcionalidade nasceu de um problema real de gestão: o lead que chegava de madrugada, a notinha do mercado perdida, o aluno que sumia sem ninguém perceber.',
 };
 

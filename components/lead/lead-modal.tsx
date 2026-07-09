@@ -4,8 +4,8 @@ import { createContext, useCallback, useContext, useEffect, useState, type React
 import { ArrowRight, Loader2, X } from 'lucide-react';
 import { P, black, body } from '@/components/fusion/theme';
 
-/** Nº do WhatsApp comercial da Evotech (portado do site anterior). */
-const WHATSAPP_NUMBER = '5543999864409';
+/** Nº do WhatsApp comercial da Evotech. */
+const WHATSAPP_NUMBER = '5543999744359';
 
 interface LeadModalContextType {
   openLeadModal: () => void;
