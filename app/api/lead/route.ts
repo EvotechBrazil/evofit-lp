@@ -14,12 +14,30 @@ const WEBHOOK_URL = process.env.LEAD_WEBHOOK_URL?.trim() || '';
 const WEBHOOK_SECRET = process.env.LEAD_WEBHOOK_SECRET?.trim() || '';
 const ALERT_WEBHOOK = process.env.LEAD_ALERT_WEBHOOK?.trim() || '';
 
+const DEFAULT_ORIGINS =
+  'https://evofit.tech,https://www.evofit.tech,https://site.evofit.tech,http://localhost:3000';
+
 const ALLOWED_ORIGINS = new Set(
-  (process.env.LEAD_ALLOWED_ORIGINS ?? 'https://evofit.tech,https://www.evofit.tech,http://localhost:3000')
+  (process.env.LEAD_ALLOWED_ORIGINS ?? DEFAULT_ORIGINS)
     .split(',')
     .map((s) => s.trim())
     .filter(Boolean),
 );
+
+/** Preview Vercel: https://evofit-site-*.vercel.app */
+function isAllowedPreviewOrigin(origin: string): boolean {
+  try {
+    const { hostname } = new URL(origin);
+    return (
+      hostname === 'site.evofit.tech' ||
+      hostname.endsWith('.evofit.tech') ||
+      /^evofit-site(-[a-z0-9-]+)?\.vercel\.app$/i.test(hostname) ||
+      hostname.endsWith('-evotechs-projects-b14b963c.vercel.app')
+    );
+  } catch {
+    return false;
+  }
+}
 
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX = 10;
@@ -47,7 +65,7 @@ function rateLimited(ip: string): boolean {
 function originAllowed(req: Request): boolean {
   const origin = req.headers.get('origin');
   if (!origin) return true;
-  return ALLOWED_ORIGINS.has(origin);
+  return ALLOWED_ORIGINS.has(origin) || isAllowedPreviewOrigin(origin);
 }
 
 function logEvent(
