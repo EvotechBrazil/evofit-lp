@@ -5,9 +5,10 @@
 #   BASE_URL=https://evofit.tech LEAD_WEBHOOK_SECRET=... ./scripts/security-smoke.sh
 set -euo pipefail
 
-WEBHOOK_URL="${LEAD_WEBHOOK_URL:-https://n8n.evotechsystem.cloud/webhook/formulario}"
+WEBHOOK_URL="${LEAD_WEBHOOK_URL:-https://n8n.evotechsystem.cloud/webhook/evofit-lead-v1}"
 SECRET="${LEAD_WEBHOOK_SECRET:-}"
 BASE_URL="${BASE_URL:-}"
+ORIGIN="${ORIGIN:-https://site.evofit.tech}"
 
 red() { printf '\033[31m%s\033[0m\n' "$*"; }
 green() { printf '\033[32m%s\033[0m\n' "$*"; }
@@ -54,6 +55,7 @@ if [[ -n "$BASE_URL" ]]; then
 
   code_bad=$(curl -s -o /tmp/smoke_bad.json -w '%{http_code}' -X POST "$BASE_URL/api/lead" \
     -H 'Content-Type: application/json' \
+    -H "Origin: $ORIGIN" \
     -d '{"nome":"X","telefone":"12","email":"a@b.com"}' || true)
   if [[ "$code_bad" == "400" ]]; then
     green "campos inválidos → $code_bad (ok)"

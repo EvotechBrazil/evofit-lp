@@ -62,10 +62,13 @@ com o header `X-Lead-Secret`. Só se o n8n responder 2xx o visitante é levado a
 
 | Variável | Descrição |
 |----------|-----------|
-| `LEAD_WEBHOOK_URL` | URL do webhook n8n (produção) |
+| `LEAD_WEBHOOK_URL` | URL do webhook n8n (path `evofit-lead-v1`) |
 | `LEAD_WEBHOOK_SECRET` | Secret do header `X-Lead-Secret` (mesmo valor no workflow n8n) |
+| `LEAD_ALERT_WEBHOOK` | Opcional — Slack/Discord se o n8n falhar |
 
-Sem essas vars a rota responde `503 misconfigured` (fail-closed). Veja [`.env.example`](.env.example).
+Sem `LEAD_WEBHOOK_*` a rota responde `503 misconfigured` (fail-closed).  
+Smoke: `BASE_URL=https://site.evofit.tech npm run smoke:security`  
+Status da auditoria: [`docs/auditoria-status-final.md`](docs/auditoria-status-final.md).
 
 ## Design
 

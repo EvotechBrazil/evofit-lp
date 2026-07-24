@@ -13,6 +13,9 @@ import { NextResponse } from 'next/server';
 const WEBHOOK_URL = process.env.LEAD_WEBHOOK_URL?.trim() || '';
 const WEBHOOK_SECRET = process.env.LEAD_WEBHOOK_SECRET?.trim() || '';
 const ALERT_WEBHOOK = process.env.LEAD_ALERT_WEBHOOK?.trim() || '';
+const IS_PROD = process.env.VERCEL_ENV === 'production' || process.env.NODE_ENV === 'production';
+
+const MAX_BODY_BYTES = 8_192;
 
 const DEFAULT_ORIGINS =
   'https://evofit.tech,https://www.evofit.tech,https://site.evofit.tech,http://localhost:3000';
@@ -24,7 +27,6 @@ const ALLOWED_ORIGINS = new Set(
     .filter(Boolean),
 );
 
-/** Preview Vercel: https://evofit-site-*.vercel.app */
 function isAllowedPreviewOrigin(origin: string): boolean {
   try {
     const { hostname } = new URL(origin);
@@ -64,7 +66,9 @@ function rateLimited(ip: string): boolean {
 
 function originAllowed(req: Request): boolean {
   const origin = req.headers.get('origin');
-  if (!origin) return true;
+  // Em produção o browser sempre manda Origin no POST cross-origin/same-site form fetch.
+  // Sem Origin: só permitido fora de produção (smoke scripts locais).
+  if (!origin) return !IS_PROD;
   return ALLOWED_ORIGINS.has(origin) || isAllowedPreviewOrigin(origin);
 }
 
@@ -100,6 +104,10 @@ async function alertUpstream(detail: string) {
   }
 }
 
+export async function GET() {
+  return NextResponse.json({ ok: false, error: 'method_not_allowed' }, { status: 405 });
+}
+
 export async function POST(req: Request) {
   const ip = clientIp(req);
 
@@ -118,9 +126,24 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: 'misconfigured' }, { status: 503 });
   }
 
+  const contentLength = Number(req.headers.get('content-length') || 0);
+  if (contentLength > MAX_BODY_BYTES) {
+    return NextResponse.json({ ok: false, error: 'payload_too_large' }, { status: 413 });
+  }
+
+  let raw: string;
+  try {
+    raw = await req.text();
+  } catch {
+    return NextResponse.json({ ok: false, error: 'invalid_body' }, { status: 400 });
+  }
+  if (raw.length > MAX_BODY_BYTES) {
+    return NextResponse.json({ ok: false, error: 'payload_too_large' }, { status: 413 });
+  }
+
   let payload: Record<string, unknown>;
   try {
-    payload = await req.json();
+    payload = JSON.parse(raw) as Record<string, unknown>;
   } catch {
     return NextResponse.json({ ok: false, error: 'invalid_json' }, { status: 400 });
   }
@@ -151,8 +174,6 @@ export async function POST(req: Request) {
     nome,
     telefone,
     email,
-    documento: null,
-    tipo_documento: null,
     timestamp: new Date().toISOString(),
     origem:
       typeof payload.origem === 'string' && payload.origem.length > 0

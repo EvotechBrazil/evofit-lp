@@ -94,6 +94,10 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
       if (!res.ok || !data.ok) {
         if (res.status === 429) {
           setError('Muitas tentativas — aguarde um minuto e tente de novo.');
+        } else if (res.status === 503 || res.status === 502) {
+          setError('Serviço temporariamente indisponível — tente em alguns minutos.');
+        } else if (res.status === 403) {
+          setError('Envio bloqueado. Atualize a página e tente de novo.');
         } else {
           setError('Erro ao enviar — tente de novo em instantes.');
         }
