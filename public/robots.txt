@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://evofit.tech/sitemap.xml
+Sitemap: https://site.evofit.tech/sitemap.xml

@@ -1,4 +1,4 @@
-# ROPA — Registro de Operações de Tratamento (site evofit.tech)
+# ROPA — Registro de Operações de Tratamento (site.evofit.tech)
 
 Documento enxuto para o tratamento de dados do **formulário de demonstração** da landing.  
 Não cobre o produto SaaS (alunos, catraca, etc.).
@@ -12,7 +12,7 @@ Não cobre o produto SaaS (alunos, catraca, etc.).
 | **Dados** | Nome, telefone/WhatsApp, e-mail; origem da página; timestamp |
 | **Dados sensíveis** | Não |
 | **Titulares** | Interessados em demonstração (donos/gestores de academias) |
-| **Fonte** | Formulário web (evofit.tech) |
+| **Fonte** | Formulário web (site.evofit.tech) |
 | **Compartilhamento** | Automação interna n8n → Postgres Evotech; WhatsApp/Meta (conversa); Vercel (hospedagem/analytics agregada) |
 | **Transferência internacional** | Infra Vercel / Meta conforme políticas dos fornecedores |
 | **Retenção** | Até 12 meses após último contato sem conversão, salvo obrigação legal |

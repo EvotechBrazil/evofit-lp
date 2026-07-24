@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
+import { SITE_URL } from '@/lib/site';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://evofit.tech'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'EvoFit — Sistema de gestão para academias com IA',
     template: '%s | EvoFit',

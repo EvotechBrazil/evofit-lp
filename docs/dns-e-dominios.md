@@ -1,30 +1,22 @@
-# DNS e domínios — EvoFit
+# Domínios — EvoFit
 
-## Estado desejado (arquitetura do repo)
+## Decisão (final)
 
-| Host | App | Projeto |
-|------|-----|---------|
-| `evofit.tech` (apex) | Landing marketing (`evofit-site`) | Vercel `evofit-site` |
-| `www.evofit.tech` | Painel / app operacional | projeto do painel |
+| Host | Função |
+|------|--------|
+| **`site.evofit.tech`** | Landing marketing (`evofit-site`) — **canônico e permanente** |
+| **`www.evofit.tech`** | Painel / app operacional |
 
-Redirects no Next da landing (`next.config.ts`) mandam `/login`, `/member`, `/r/*`, etc. para `https://www.evofit.tech/...`.
+**Não há pendência de DNS apex.** O acesso à landing é e permanece `https://site.evofit.tech`.
 
-## Estado observado na auditoria (2026-07-24)
+## Canônicos no código
 
-Apex e www respondiam com redirect para `/login` do **painel**, não da landing.  
-Antes de considerar go-live de marketing no apex:
+Centralizados em [`lib/site.ts`](../lib/site.ts) (`SITE_URL` / `SITE_HOST`):
 
-1. No Vercel, o domínio **apex** deve apontar para o projeto `evofit-site`.
-2. `www` permanece no painel.
-3. Após apontar, validar:
-   - `https://evofit.tech/` → landing (não login)
-   - `https://evofit.tech/api/lead` → 405/400 em GET, POST funcional
-   - `https://evofit.tech/politica-de-privacidade` → 200
-   - `https://www.evofit.tech/login` → painel
+- `metadataBase`, Open Graph, JSON-LD  
+- `/politica-de-privacidade` e `/termos-de-uso`  
+- `sitemap.xml` e `robots.txt`
 
-## Checklist pós-DNS
+## Redirects de painel
 
-- [ ] Apex no projeto correto
-- [ ] Preview/Production com `LEAD_WEBHOOK_*`
-- [ ] `./scripts/security-smoke.sh` com `BASE_URL=https://evofit.tech`
-- [ ] Certificado TLS ok (HSTS já configurado no app)
+Rotas `/login`, `/member`, `/r/*`, etc. neste app redirecionam para `https://www.evofit.tech/...` (`next.config.ts`).

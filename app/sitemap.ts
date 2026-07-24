@@ -1,19 +1,20 @@
 import type { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://evofit.tech',
+      url: SITE_URL,
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
-      url: 'https://evofit.tech/politica-de-privacidade',
+      url: `${SITE_URL}/politica-de-privacidade`,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
-      url: 'https://evofit.tech/termos-de-uso',
+      url: `${SITE_URL}/termos-de-uso`,
       changeFrequency: 'yearly',
       priority: 0.3,
     },

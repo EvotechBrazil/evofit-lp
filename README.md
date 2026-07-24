@@ -3,9 +3,9 @@
 Landing page e captação de leads do **EvoFit**, a plataforma de gestão para academias com IA
 (_"A evolução em sistemas de gerenciamento para academias"_).
 
-Serve o apex **evofit.tech**. O painel administrativo vive em **www.evofit.tech** — rotas do
-painel que caem no apex (`/login`, `/member`, links de indicação `/r/:code`, etc.) são
-redirecionadas automaticamente em [`next.config.ts`](next.config.ts).
+Landing canônica: **https://site.evofit.tech**. Painel: **www.evofit.tech**.  
+Rotas de painel que caem neste app (`/login`, `/member`, `/r/:code`, etc.) redirecionam
+em [`next.config.ts`](next.config.ts). Canônicos em [`lib/site.ts`](lib/site.ts).
 
 ## Stack
 

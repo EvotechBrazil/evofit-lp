@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { archivoBlack, instrument, P, black } from '@/components/fusion/theme';
 import { EvoFitWordmarkMono } from '@/components/brand';
+import { SITE_HOST, SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Termos de uso',
-  description: 'Condições de uso do site evofit.tech e do formulário de demonstração.',
-  alternates: { canonical: 'https://evofit.tech/termos-de-uso' },
+  description: `Condições de uso do site ${SITE_HOST} e do formulário de demonstração.`,
+  alternates: { canonical: `${SITE_URL}/termos-de-uso` },
 };
 
 const SECTIONS: { title: string; body: React.ReactNode }[] = [
@@ -14,7 +15,7 @@ const SECTIONS: { title: string; body: React.ReactNode }[] = [
     title: '1. Aceite',
     body: (
       <>
-        Ao acessar <strong>evofit.tech</strong> ou enviar o formulário de demonstração, você
+        Ao acessar <strong>{SITE_HOST}</strong> ou enviar o formulário de demonstração, você
         concorda com estes termos e com a{' '}
         <Link href="/politica-de-privacidade" className="underline" style={{ color: P.blue }}>
           política de privacidade
@@ -27,7 +28,7 @@ const SECTIONS: { title: string; body: React.ReactNode }[] = [
     title: '2. O que é este site',
     body: (
       <>
-        Este site é uma página institucional e de captação de leads do <strong>EvoFit</strong>,
+        Este site é a página institucional e de captação de leads do <strong>EvoFit</strong>,
         produto da Evotech System. Não é o painel operacional da plataforma (acesso de clientes
         em www.evofit.tech). Conteúdo de marketing pode ser atualizado sem aviso prévio.
       </>

@@ -18,7 +18,7 @@ const IS_PROD = process.env.VERCEL_ENV === 'production' || process.env.NODE_ENV 
 const MAX_BODY_BYTES = 8_192;
 
 const DEFAULT_ORIGINS =
-  'https://evofit.tech,https://www.evofit.tech,https://site.evofit.tech,http://localhost:3000';
+  'https://site.evofit.tech,https://evofit.tech,https://www.evofit.tech,http://localhost:3000';
 
 const ALLOWED_ORIGINS = new Set(
   (process.env.LEAD_ALLOWED_ORIGINS ?? DEFAULT_ORIGINS)
@@ -178,7 +178,7 @@ export async function POST(req: Request) {
     origem:
       typeof payload.origem === 'string' && payload.origem.length > 0
         ? payload.origem.slice(0, 200)
-        : 'evofit.tech',
+        : 'site.evofit.tech',
   });
 
   try {

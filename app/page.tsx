@@ -17,14 +17,15 @@ import { FinalCta } from '@/components/sections/final-cta';
 import { Footer } from '@/components/sections/footer';
 import { MobileCta } from '@/components/sections/mobile-cta';
 import { FAQ, LEMA, SUB } from '@/content/site';
+import { SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'EvoFit — Sistema de gestão para academias com IA',
   description: `${LEMA}: IA que vende no WhatsApp 24/7, agenda de aulas, financeiro completo, portal do aluno gamificado, catraca com reconhecimento facial e LGPD — com a marca da sua academia.`,
-  alternates: { canonical: 'https://evofit.tech' },
+  alternates: { canonical: SITE_URL },
   openGraph: {
     type: 'website',
-    url: 'https://evofit.tech',
+    url: SITE_URL,
     title: 'EvoFit — Sistema de gestão para academias com IA',
     description: SUB,
     siteName: 'EvoFit',
@@ -43,8 +44,8 @@ const jsonLd = [
     '@type': 'Organization',
     name: 'EvoFit',
     legalName: 'Evotech System',
-    url: 'https://evofit.tech',
-    logo: 'https://evofit.tech/logos/evofit_logo_clean.svg',
+    url: SITE_URL,
+    logo: `${SITE_URL}/logos/evofit_logo_clean.svg`,
   },
   {
     '@context': 'https://schema.org',
@@ -53,7 +54,7 @@ const jsonLd = [
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web',
     description: `${LEMA}. ${SUB}`,
-    url: 'https://evofit.tech',
+    url: SITE_URL,
     inLanguage: 'pt-BR',
   },
   {

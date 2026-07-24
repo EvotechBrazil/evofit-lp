@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { archivoBlack, instrument, P, black } from '@/components/fusion/theme';
 import { EvoFitWordmarkMono } from '@/components/brand';
+import { SITE_HOST, SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Política de privacidade',
   description: 'Como o site do EvoFit coleta e trata os dados enviados no formulário de contato.',
-  alternates: { canonical: 'https://evofit.tech/politica-de-privacidade' },
+  alternates: { canonical: `${SITE_URL}/politica-de-privacidade` },
 };
 
 const SECTIONS: { title: string; body: React.ReactNode }[] = [
@@ -14,7 +15,7 @@ const SECTIONS: { title: string; body: React.ReactNode }[] = [
     title: '1. Quem somos',
     body: (
       <>
-        Este site (evofit.tech) apresenta o <strong>EvoFit</strong>, sistema de gestão para
+        Este site ({SITE_HOST}) apresenta o <strong>EvoFit</strong>, sistema de gestão para
         academias desenvolvido pela <strong>Evotech System</strong> (&ldquo;nós&rdquo;), que atua
         como controladora dos dados pessoais coletados por este site nos termos da Lei nº
         13.709/2018 (LGPD).
@@ -139,7 +140,7 @@ export default function PoliticaDePrivacidade() {
         <div className="mx-auto flex max-w-3xl items-center justify-between px-6 text-[12px]" style={{ color: P.muted }}>
           <span>EvoFit © 2026 — Evotech System</span>
           <Link href="/" className="underline">
-            evofit.tech
+            {SITE_HOST}
           </Link>
         </div>
       </footer>

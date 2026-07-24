@@ -79,7 +79,7 @@ export default function OgImage() {
             display: 'flex',
           }}
         >
-          evofit.tech — Evotech System
+          site.evofit.tech — Evotech System
         </div>
       </div>
     ),

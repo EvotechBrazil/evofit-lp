@@ -48,7 +48,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-6 py-6 text-[12px]" style={{ color: '#5a6f8c' }}>
           <span>EvoFit © 2026 — Evotech System</span>
-          <span>evofit.tech</span>
+          <span>site.evofit.tech</span>
         </div>
       </div>
     </footer>

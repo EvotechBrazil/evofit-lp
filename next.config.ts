@@ -1,9 +1,8 @@
 import type { NextConfig } from 'next';
 
 /**
- * O apex evofit.tech serve ESTE site; o painel admin vive em www.evofit.tech.
- * Rotas do painel historicamente distribuídas no apex (links de indicação /r/:code,
- * /login, superfícies públicas) redirecionam pro www pra nunca quebrar.
+ * Landing canônica: site.evofit.tech. Painel admin: www.evofit.tech.
+ * Rotas do painel que caírem neste app (/login, /r/:code, etc.) redirecionam pro www.
  */
 const PANEL = 'https://www.evofit.tech';
 const PANEL_ROUTES = [
