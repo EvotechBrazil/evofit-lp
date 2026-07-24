@@ -26,13 +26,13 @@ const SECTIONS: { title: string; body: React.ReactNode }[] = [
     body: (
       <>
         Ao preencher o formulário de demonstração, coletamos <strong>nome</strong>,{' '}
-        <strong>telefone/WhatsApp</strong>, <strong>e-mail</strong> e, opcionalmente,{' '}
-        <strong>CPF ou CNPJ</strong> (usado apenas como identificador para não duplicar o seu
-        cadastro). Usamos esses dados para entrar em contato comercial, agendar a demonstração que
-        você solicitou e, quando aplicável, retomar o contato caso a negociação não seja concluída
-        (base legal: execução de procedimentos preliminares a pedido do titular e legítimo
-        interesse comercial — art. 7º, V e IX, da LGPD). Não coletamos dados sensíveis e não usamos
-        cookies de rastreamento de terceiros.
+        <strong>telefone/WhatsApp</strong> e <strong>e-mail</strong>. Usamos esses dados para
+        entrar em contato comercial e agendar a demonstração que você solicitou (base legal:
+        execução de procedimentos preliminares a pedido do titular — art. 7º, V, da LGPD). Não
+        pedimos CPF/CNPJ neste formulário. Também registramos métricas agregadas de uso do site
+        via <strong>Vercel Analytics</strong> (páginas visitadas, país/dispositivo em nível
+        agregado), com base no legítimo interesse de melhorar o site (art. 7º, IX) — sem
+        cookies de publicidade de terceiros.
       </>
     ),
   },
@@ -42,9 +42,11 @@ const SECTIONS: { title: string; body: React.ReactNode }[] = [
       <>
         Os dados do formulário são recebidos pela nossa ferramenta interna de automação e
         armazenados em base de dados própria da Evotech System, acessíveis à nossa equipe
-        comercial. Ao concluir o envio, você é direcionado ao{' '}
-        <strong>WhatsApp</strong> — a conversa a partir dali é regida pela política de privacidade
-        do WhatsApp. Não vendemos nem cedemos seus dados a terceiros.
+        comercial. A hospedagem do site e a analytics usam a infraestrutura da{' '}
+        <strong>Vercel</strong>. Ao concluir o envio com sucesso, você é direcionado ao{' '}
+        <strong>WhatsApp</strong> — a conversa a partir dali é regida pela política de
+        privacidade do WhatsApp/Meta. Não vendemos nem cedemos seus dados a terceiros para
+        marketing alheio.
       </>
     ),
   },
@@ -52,8 +54,9 @@ const SECTIONS: { title: string; body: React.ReactNode }[] = [
     title: '4. Por quanto tempo guardamos',
     body: (
       <>
-        Mantemos os dados de contato pelo período necessário à condução da negociação e, depois,
-        pelos prazos legais aplicáveis. Você pode pedir a exclusão a qualquer momento.
+        Mantemos os dados de contato pelo período necessário à condução da negociação e, no
+        máximo, <strong>12 meses</strong> após o último contato sem conversão, salvo obrigação
+        legal de retenção maior. Você pode pedir a exclusão a qualquer momento.
       </>
     ),
   },
@@ -64,10 +67,10 @@ const SECTIONS: { title: string; body: React.ReactNode }[] = [
         Você pode solicitar, a qualquer momento: confirmação de tratamento, acesso, correção,
         anonimização, portabilidade, exclusão e informações sobre compartilhamento. Para exercer
         qualquer direito, fale com a gente pelo e-mail{' '}
-        <a href="mailto:noreply@evofit.tech" className="underline" style={{ color: P.blue }}>
-          noreply@evofit.tech
+        <a href="mailto:privacidade@evofit.tech" className="underline" style={{ color: P.blue }}>
+          privacidade@evofit.tech
         </a>{' '}
-        ou pelo WhatsApp comercial.
+        ou pelo WhatsApp comercial. Responderemos no prazo legal aplicável.
       </>
     ),
   },
@@ -76,8 +79,9 @@ const SECTIONS: { title: string; body: React.ReactNode }[] = [
     body: (
       <>
         Adotamos medidas técnicas e organizacionais compatíveis com o mercado — criptografia em
-        trânsito, controle de acesso e registro de operações — para proteger os dados tratados por
-        este site e pela plataforma EvoFit.
+        trânsito (HTTPS), autenticação do canal de envio do formulário, controle de acesso e
+        registro de operações — para proteger os dados tratados por este site e pela plataforma
+        EvoFit.
       </>
     ),
   },

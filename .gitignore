@@ -7,6 +7,9 @@ node_modules
 next-env.d.ts
 *.tsbuildinfo
 
+# vercel local link
+.vercel
+
 # misc
 .DS_Store
 *.local

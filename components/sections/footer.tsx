@@ -37,6 +37,11 @@ export function Footer() {
                 Política de privacidade
               </a>
             </li>
+            <li>
+              <a href="/termos-de-uso" className="transition-colors hover:text-white">
+                Termos de uso
+              </a>
+            </li>
           </ul>
         </div>
       </div>

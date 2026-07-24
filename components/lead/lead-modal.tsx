@@ -3,7 +3,6 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
 import { ArrowRight, Loader2, X } from 'lucide-react';
 import { P, black, body } from '@/components/fusion/theme';
-import { formatDocumento, onlyDigits, validateDocumento } from '@/lib/documento';
 
 /** Nº do WhatsApp comercial da Evotech. */
 const WHATSAPP_NUMBER = '5543999744359';
@@ -30,7 +29,8 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
-  const [documento, setDocumento] = useState('');
+  /** Honeypot anti-bot — deve permanecer vazio. */
+  const [website, setWebsite] = useState('');
 
   const openLeadModal = useCallback(() => {
     setError('');
@@ -69,43 +69,47 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
       setError('Telefone incompleto.');
       return;
     }
-    const doc = onlyDigits(documento);
-    let tipoDocumento: 'cpf' | 'cnpj' | null = null;
-    if (doc) {
-      const res = validateDocumento(doc);
-      if (!res.valid) {
-        setError('CPF/CNPJ inválido.');
-        return;
-      }
-      tipoDocumento = res.tipo;
-    }
 
     setIsLoading(true);
     try {
-      await fetch('/api/lead', {
+      const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           nome: name.trim(),
           telefone: phone.trim(),
           email: email.trim(),
-          documento: doc,
-          tipoDocumento,
-          timestamp: new Date().toISOString(),
+          website,
           origem: window.location.origin,
         }),
       });
+
+      let data: { ok?: boolean; error?: string } = {};
+      try {
+        data = await res.json();
+      } catch {
+        /* ignore */
+      }
+
+      if (!res.ok || !data.ok) {
+        if (res.status === 429) {
+          setError('Muitas tentativas — aguarde um minuto e tente de novo.');
+        } else {
+          setError('Erro ao enviar — tente de novo em instantes.');
+        }
+        return;
+      }
 
       setOpen(false);
       setName('');
       setPhone('');
       setEmail('');
-      setDocumento('');
+      setWebsite('');
 
       const message = encodeURIComponent(
-        `Olá! Meu nome é ${name.trim()}, quero conhecer o EvoFit para a minha academia.`
+        `Olá! Meu nome é ${name.trim()}, quero conhecer o EvoFit para a minha academia.`,
       );
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank', 'noopener,noreferrer');
     } catch {
       setError('Erro ao enviar — tente de novo em instantes.');
     } finally {
@@ -146,6 +150,30 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
             </p>
 
             <form onSubmit={handleSubmit} className="mt-5 space-y-4">
+              {/* Honeypot — oculto de humanos (CSS + aria/tabIndex) */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  left: '-10000px',
+                  top: 'auto',
+                  width: 1,
+                  height: 1,
+                  overflow: 'hidden',
+                }}
+              >
+                <label htmlFor="lead-website">Website</label>
+                <input
+                  id="lead-website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                />
+              </div>
+
               <div>
                 <label htmlFor="lead-name" className="mb-1.5 block text-[13px] font-semibold" style={{ color: P.ink }}>
                   Nome completo
@@ -192,20 +220,6 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
                   style={{ borderColor: '#e2e6ec', color: P.ink }}
                 />
               </div>
-              <div>
-                <label htmlFor="lead-doc" className="mb-1.5 block text-[13px] font-semibold" style={{ color: P.ink }}>
-                  CPF ou CNPJ <span style={{ fontWeight: 400, color: P.muted }}>(opcional)</span>
-                </label>
-                <input
-                  id="lead-doc"
-                  value={documento}
-                  onChange={(e) => setDocumento(formatDocumento(e.target.value))}
-                  placeholder="000.000.000-00"
-                  inputMode="numeric"
-                  className="h-12 w-full border-2 px-3.5 text-[14px] outline-none transition-colors focus:border-[#152238]"
-                  style={{ borderColor: '#e2e6ec', color: P.ink }}
-                />
-              </div>
 
               {error && (
                 <p className="text-[13px] font-semibold" style={{ color: '#c62828' }}>
@@ -233,6 +247,10 @@ export function LeadModalProvider({ children }: { children: ReactNode }) {
                 Ao enviar, você concorda com a nossa{' '}
                 <a href="/politica-de-privacidade" className="underline" style={{ color: P.blue }}>
                   política de privacidade
+                </a>{' '}
+                e os{' '}
+                <a href="/termos-de-uso" className="underline" style={{ color: P.blue }}>
+                  termos de uso
                 </a>
                 .
               </p>

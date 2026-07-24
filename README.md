@@ -55,9 +55,17 @@ layout. Ajustes de cor/tipografia da marca ficam nos tokens em
 ## Fluxo de lead
 
 O modal de demonstração envia o lead para [`/api/lead`](app/api/lead/route.ts), que valida os
-campos e repassa para o webhook do n8n da Evotech. Em seguida o visitante é levado ao WhatsApp
-comercial com a mensagem pré-preenchida. Se a entrega no webhook falhar, o lead ainda segue
-para o WhatsApp — a captação nunca é bloqueada.
+campos (nome, telefone, e-mail — **sem CPF**), aplica rate limit e repassa ao webhook n8n
+com o header `X-Lead-Secret`. Só se o n8n responder 2xx o visitante é levado ao WhatsApp.
+
+### Env (Vercel / `.env.local`)
+
+| Variável | Descrição |
+|----------|-----------|
+| `LEAD_WEBHOOK_URL` | URL do webhook n8n (produção) |
+| `LEAD_WEBHOOK_SECRET` | Secret do header `X-Lead-Secret` (mesmo valor no workflow n8n) |
+
+Sem essas vars a rota responde `503 misconfigured` (fail-closed). Veja [`.env.example`](.env.example).
 
 ## Design
 
