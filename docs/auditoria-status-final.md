@@ -1,10 +1,11 @@
 # Status final — auditoria segurança & LGPD
 
-**Status: FINALIZADA** · 2026-07-24  
+**Status: FINALIZADA E ENCERRADA** · 2026-07-24  
 **Escopo:** landing `evofit-site` + pipeline lead  
 **URL canônica:** https://site.evofit.tech  
+**Encerramento confirmado pelo PO:** domínio permanente `site.evofit.tech`; sem pendência de DNS apex.
 
-Não reabrir itens de DNS apex — domínio definitivo é `site.evofit.tech`.
+Não reabrir esta auditoria como backlog ativo. Residuais opcionais (mailbox privacidade@, credential n8n Header Auth, upgrade Next) são melhoria contínua, não gate.
 
 ---
 
