@@ -1,5 +1,6 @@
 'use client';
 
+import { useCallback, useState } from 'react';
 import { ChatMock } from '@/components/chat-mock';
 import { useLeadModal } from '@/components/lead/lead-modal';
 import { BtnFusion, FloatCard, P, black, chatLight } from '@/components/fusion/theme';
@@ -7,6 +8,8 @@ import { CHAT_VENDAS, CTA_PRIMARY, PROVA, SUB } from '@/content/site';
 
 export function Hero() {
   const { openLeadModal } = useLeadModal();
+  const [shown, setShown] = useState(0);
+  const onProgress = useCallback((n: number) => setShown(n), []);
 
   return (
     <section id="inicio" className="mx-auto mt-6 max-w-[1240px] px-4">
@@ -71,19 +74,28 @@ export function Hero() {
           <div className="relative mx-auto">
             <div className="h-[480px] w-[265px] -rotate-2 overflow-hidden rounded-[2rem] bg-white p-2 shadow-2xl">
               <div className="h-full w-full overflow-hidden rounded-[1.55rem]">
-                <ChatMock messages={CHAT_VENDAS} theme={chatLight} title="Sofia · IA da sua academia" />
+                <ChatMock
+                  messages={CHAT_VENDAS}
+                  theme={chatLight}
+                  title="Sofia · IA da sua academia"
+                  onProgress={onProgress}
+                />
               </div>
             </div>
-            <FloatCard
-              title="Aula experimental ✅"
-              sub="Ana · quinta 19h"
-              className="absolute -left-32 top-14 max-lg:hidden"
-            />
-            <FloatCard
-              title="Pix recebido 💸"
-              sub="R$ 297 · mensalidade"
-              className="absolute -right-28 bottom-20 max-lg:hidden [animation-delay:1.3s]"
-            />
+            {shown >= 8 && (
+              <FloatCard
+                title="Aula experimental ✅"
+                sub="Ana · quinta 19h"
+                className="chat-in absolute -left-32 top-14 max-lg:hidden"
+              />
+            )}
+            {shown >= 6 && (
+              <FloatCard
+                title="Pix recebido 💸"
+                sub="R$ 297 · mensalidade"
+                className="chat-in absolute -right-28 bottom-20 max-lg:hidden"
+              />
+            )}
           </div>
         </div>
       </div>

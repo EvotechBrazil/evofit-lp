@@ -17,13 +17,19 @@ const PANEL_ROUTES = [
 ];
 
 /** CSP compatível com Next + Vercel Analytics (sem third-party ads). */
+const IS_DEV = process.env.NODE_ENV !== 'production';
 const CSP = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
+  // React/Turbopack usam eval() só no `next dev`. Produção continua sem unsafe-eval.
+  IS_DEV
+    ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://va.vercel-scripts.com"
+    : "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self' data:",
-  "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com",
+  IS_DEV
+    ? "connect-src 'self' ws: wss: http://localhost:* https://vitals.vercel-insights.com https://va.vercel-scripts.com"
+    : "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",
