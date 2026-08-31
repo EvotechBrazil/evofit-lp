@@ -15,11 +15,22 @@ export function Nav() {
           <EvoFitWordmarkMono className="text-xl" color={P.blue} accent={P.orange} />
         </Link>
         <nav className="hidden items-center gap-7 text-[13.5px] font-medium lg:flex" style={{ color: P.muted }}>
-          {CTA_LINKS.map((l) => (
-            <Link key={l.href} href={l.href} className="transition-colors hover:text-black">
-              {l.label}
-            </Link>
-          ))}
+          {CTA_LINKS.map((l) =>
+            l.href.includes('#') ? (
+              <a key={l.href} href={l.href} className="transition-colors hover:text-black">
+                {l.label}
+              </a>
+            ) : (
+              <Link
+                key={l.href}
+                href={l.href}
+                prefetch={false}
+                className="transition-colors hover:text-black"
+              >
+                {l.label}
+              </Link>
+            ),
+          )}
         </nav>
         <button
           type="button"

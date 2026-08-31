@@ -28,7 +28,7 @@ const CSP = [
   "img-src 'self' data: blob:",
   "font-src 'self' data:",
   IS_DEV
-    ? "connect-src 'self' ws: wss: http://localhost:* https://vitals.vercel-insights.com https://va.vercel-scripts.com"
+    ? "connect-src 'self' ws: wss: http://localhost:* http://127.0.0.1:* ws://localhost:* ws://127.0.0.1:* https://vitals.vercel-insights.com https://va.vercel-scripts.com"
     : "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com",
   "frame-ancestors 'none'",
   "base-uri 'self'",
