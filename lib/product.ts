@@ -74,9 +74,9 @@ export async function fetchPublicProduct(): Promise<PublicProductPayload> {
 }
 
 export const STATUS_LABEL: Record<ProductStatusJson, string> = {
-  production: 'Em produção',
-  activating: 'Em ativação',
-  radar: 'No radar',
+  production: 'Disponível',
+  activating: 'Chegando agora',
+  radar: 'Em breve',
 };
 
 export const CATEGORY_LABEL: Record<string, string> = {

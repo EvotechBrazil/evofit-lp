@@ -55,7 +55,9 @@ export default async function FuncionalidadePage({
           ← Todas as funcionalidades
         </Link>
         <div className="mt-6 flex flex-wrap items-center gap-2">
-          <Badge tone={statusTone(mod.status)}>{STATUS_LABEL[mod.status]}</Badge>
+          {mod.status !== 'production' && (
+            <Badge tone={statusTone(mod.status)}>{STATUS_LABEL[mod.status]}</Badge>
+          )}
           <span className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: P.muted }}>
             {CATEGORY_LABEL[mod.category] ?? mod.category}
           </span>

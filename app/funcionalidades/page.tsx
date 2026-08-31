@@ -22,13 +22,13 @@ export default async function FuncionalidadesPage() {
     <SiteChrome>
       <main className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <SectionHeading
-          kicker="Catálogo vivo"
+          kicker="Funcionalidades"
           title={
             <>
-              Tudo que o EvoFit faz. <span style={{ color: P.orange }}>Atualizado pelo produto.</span>
+              Tudo que o EvoFit faz. <span style={{ color: P.orange }}>Num sistema só.</span>
             </>
           }
-          lead="A lista vem da Alicia. Quando um módulo entra em produção lá, aparece aqui — sem copiar texto no site."
+          lead="IA, agenda, financeiro, portal do aluno, catraca e o que mais a sua academia precisa — no mesmo lugar."
         />
         <p className="mt-4 text-center text-[12px]" style={{ color: P.muted }}>
           {categories.map((c) => CATEGORY_LABEL[c] ?? c).join(' · ')}

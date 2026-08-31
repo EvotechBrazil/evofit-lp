@@ -32,13 +32,12 @@ export default async function NovidadesPage() {
               O que saiu. <span style={{ color: P.orange }}>Quando saiu.</span>
             </>
           }
-          lead="Publicado na Alicia. O site só renderiza — não há lista paralela para esquecer de atualizar."
+          lead="O que o EvoFit ganhou de novo — e quando ficou disponível pra sua academia."
         />
 
         {product.releases.length === 0 ? (
           <p className="mt-12 text-[14px]" style={{ color: P.muted }}>
-            Ainda não há entradas no changelog. Assim que o time publicar em Plataforma → Site
-            público, elas aparecem aqui.
+            As próximas novidades aparecem aqui assim que forem liberadas.
           </p>
         ) : (
           <ol className="mt-12 space-y-10">

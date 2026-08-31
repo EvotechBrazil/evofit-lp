@@ -31,7 +31,9 @@ export function ProductGrid({
             {String(i + 1).padStart(2, '0')}
           </span>
           <div className="flex flex-wrap items-center gap-2">
-            <Badge tone={statusTone(m.status)}>{STATUS_LABEL[m.status]}</Badge>
+            {m.status !== 'production' && (
+              <Badge tone={statusTone(m.status)}>{STATUS_LABEL[m.status]}</Badge>
+            )}
             <span className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: P.muted }}>
               {CATEGORY_LABEL[m.category] ?? m.category}
             </span>

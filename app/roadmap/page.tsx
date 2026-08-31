@@ -9,14 +9,14 @@ export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: 'Roadmap',
-  description: 'O que está em produção, o que estamos construindo e o que ainda pode ser feito no EvoFit.',
+  description: 'O que o EvoFit oferece hoje, o que está chegando e o que vem em seguida.',
   alternates: { canonical: `${SITE_URL}/roadmap` },
 };
 
 const COLUMNS: { key: 'production' | 'building' | 'radar'; title: string; hint: string }[] = [
-  { key: 'production', title: 'Em produção', hint: 'Academias reais usando' },
-  { key: 'building', title: 'Construindo agora', hint: 'Em ativação / rollout' },
-  { key: 'radar', title: 'No radar', hint: 'Ainda pode ser feito' },
+  { key: 'production', title: 'O que oferecemos', hint: 'Já disponível na sua academia' },
+  { key: 'building', title: 'Chegando agora', hint: 'Em ativação' },
+  { key: 'radar', title: 'Em breve', hint: 'Na fila para entrar' },
 ];
 
 export default async function RoadmapPage() {
@@ -31,13 +31,13 @@ export default async function RoadmapPage() {
     <SiteChrome>
       <main className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <SectionHeading
-          kicker="Roadmap"
+          kicker="O produto"
           title={
             <>
-              Onde cada módulo está. <span style={{ color: P.orange }}>Sem slide paralelo.</span>
+              O que você tem. <span style={{ color: P.orange }}>O que vem aí.</span>
             </>
           }
-          lead="As três colunas saem do mesmo catálogo da Alicia que alimenta Funcionalidades e o changelog."
+          lead="O que a sua academia já usa, o que está chegando e o que vem em seguida."
         />
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {COLUMNS.map((col) => (
