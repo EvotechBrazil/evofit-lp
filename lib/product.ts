@@ -55,21 +55,46 @@ function apiBase(): string {
   return (process.env.ALICIA_PUBLIC_API_URL ?? '').replace(/\/$/, '');
 }
 
+function scrubAlicia(text: string): string {
+  return text
+    .replace(/\bAlicia\s*\(\s*vendas\s*\)/gi, 'IA de vendas')
+    .replace(/\bAlicia\b/gi, 'IA de vendas')
+    .replace(/\s{2,}/g, ' ')
+    .replace(/\s+,/g, ',')
+    .trim();
+}
+
+function scrubPayload(data: PublicProductPayload): PublicProductPayload {
+  return {
+    ...data,
+    modules: data.modules.map((m) => ({
+      ...m,
+      title: scrubAlicia(m.title),
+      summary: scrubAlicia(m.summary),
+    })),
+    releases: data.releases.map((r) => ({
+      ...r,
+      title: scrubAlicia(r.title),
+      body: scrubAlicia(r.body),
+    })),
+  };
+}
+
 export async function fetchPublicProduct(): Promise<PublicProductPayload> {
   const base = apiBase();
-  if (!base) return FALLBACK;
+  if (!base) return scrubPayload(FALLBACK);
 
   try {
     const res = await fetch(`${base}/public/product`, {
       next: { tags: [PRODUCT_TAG], revalidate: 300 },
       headers: { Accept: 'application/json' },
     });
-    if (!res.ok) return FALLBACK;
+    if (!res.ok) return scrubPayload(FALLBACK);
     const data = (await res.json()) as PublicProductPayload;
-    if (!Array.isArray(data.modules) || data.modules.length === 0) return FALLBACK;
-    return data;
+    if (!Array.isArray(data.modules) || data.modules.length === 0) return scrubPayload(FALLBACK);
+    return scrubPayload(data);
   } catch {
-    return FALLBACK;
+    return scrubPayload(FALLBACK);
   }
 }
 
