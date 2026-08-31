@@ -18,6 +18,9 @@ import { Footer } from '@/components/sections/footer';
 import { MobileCta } from '@/components/sections/mobile-cta';
 import { FAQ, LEMA, SUB } from '@/content/site';
 import { SITE_URL } from '@/lib/site';
+import { fetchPublicProduct } from '@/lib/product';
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: 'EvoFit — Sistema de gestão para academias com IA',
@@ -68,7 +71,8 @@ const jsonLd = [
   },
 ];
 
-export default function Landing() {
+export default async function Landing() {
+  const product = await fetchPublicProduct();
   return (
     <div
       className={`${instrument.variable} ${archivoBlack.variable} min-h-screen`}
@@ -104,7 +108,7 @@ export default function Landing() {
               'Contratos digitais',
             ]}
           />
-          <Modules />
+          <Modules modules={product.modules} />
           <Integracoes />
           <WhiteLabel />
           <Diferenciais />

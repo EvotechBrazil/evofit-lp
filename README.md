@@ -31,8 +31,12 @@ npm run start    # sobe o build de produção
 ```
 app/
   page.tsx                    landing oficial (design "Fusão")
+  funcionalidades/            catálogo vivo (Alicia GET /public/product)
+  novidades/                  changelog vivo
+  roadmap/                    em produção / construindo / no radar
   layout.tsx                  <html>, fontes, metadata base
   api/lead/route.ts           proxy do formulário de lead → webhook n8n
+  api/revalidate/route.ts     HMAC da Alicia quebra o ISR do catálogo
   politica-de-privacidade/    página LGPD
   opengraph-image.tsx         imagem OG gerada
   sitemap.ts · robots.ts      SEO
@@ -42,7 +46,7 @@ components/
   lead/lead-modal.tsx         modal de captação de lead (client)
   brand.tsx · chat-mock.tsx   wordmark e mock de conversa de WhatsApp
 content/
-  site.ts                     toda a copy do site (textos, chats, módulos, FAQ, stats)
+  site.ts                     copy institucional (lema, FAQ, chats). Módulos vivos vêm da Alicia
 ```
 
 ## Editando o conteúdo
@@ -65,6 +69,8 @@ com o header `X-Lead-Secret`. Só se o n8n responder 2xx o visitante é levado a
 | `LEAD_WEBHOOK_URL` | URL do webhook n8n (path `evofit-lead-v1`) |
 | `LEAD_WEBHOOK_SECRET` | Secret do header `X-Lead-Secret` (mesmo valor no workflow n8n) |
 | `LEAD_ALERT_WEBHOOK` | Opcional — Slack/Discord se o n8n falhar |
+| `ALICIA_PUBLIC_API_URL` | Backend Alicia com prefixo (`…/api/v1`). Sem isto, o catálogo cai no fallback estático |
+| `SITE_REVALIDATE_SECRET` | HMAC do `POST /api/revalidate` (mesmo valor em `SITE_REVALIDATE_SECRET` da Alicia) |
 
 Sem `LEAD_WEBHOOK_*` a rota responde `503 misconfigured` (fail-closed).  
 Smoke: `BASE_URL=https://site.evofit.tech npm run smoke:security`  

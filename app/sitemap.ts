@@ -18,5 +18,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.3,
     },
+    {
+      url: `${SITE_URL}/funcionalidades`,
+      changeFrequency: 'daily',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/novidades`,
+      changeFrequency: 'daily',
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/roadmap`,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
   ];
 }

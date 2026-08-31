@@ -1,12 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { useLeadModal } from '@/components/lead/lead-modal';
+import { LeadModalProvider, useLeadModal } from '@/components/lead/lead-modal';
 import { EvoFitWordmarkMono } from '@/components/brand';
-import { P, CTA_LINKS } from '@/components/sections/shared';
+import { Footer } from '@/components/sections/footer';
+import { archivoBlack, instrument, P } from '@/components/fusion/theme';
+import { CTA_LINKS } from '@/components/sections/shared';
 import { CTA_PRIMARY } from '@/content/site';
 
-export function Nav() {
+function TopNav() {
   const { openLeadModal } = useLeadModal();
   return (
     <header className="sticky top-0 z-40 border-b border-black/6 bg-white/90 backdrop-blur-md">
@@ -31,5 +33,20 @@ export function Nav() {
         </button>
       </div>
     </header>
+  );
+}
+
+export function SiteChrome({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      className={`${instrument.variable} ${archivoBlack.variable} min-h-screen`}
+      style={{ background: P.paper, color: P.ink, fontFamily: 'var(--font-instrument)' }}
+    >
+      <LeadModalProvider>
+        <TopNav />
+        {children}
+        <Footer />
+      </LeadModalProvider>
+    </div>
   );
 }
